@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.err &mdash; Err 3.2.1 documentation</title>
+    <title>errbot.err &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
     <link rel="up" title="errbot" href="../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -131,6 +131,10 @@
     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Either use python3 or install err using ./setup.py develop.&#39;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;utf-8&#39;</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&#39;Starting errbot with a default system encoding other than </span><span class="se">\&#39;</span><span class="s">utf-8</span><span class="se">\&#39;</span><span class="s">&#39;</span>
+                 <span class="s">&#39; might cause you a heap of troubles.&#39;</span>
+                 <span class="s">&#39; Your current encoding is set at </span><span class="se">\&#39;</span><span class="si">%s</span><span class="se">\&#39;</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">())</span>
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
@@ -420,7 +424,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -428,7 +432,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

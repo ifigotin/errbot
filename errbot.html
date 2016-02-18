@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot package &mdash; Err 3.2.1 documentation</title>
+    <title>errbot package &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="_static/err.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,9 +24,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="index.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="index.html" />
     <link rel="next" title="errbot.backends package" href="errbot.backends.html" />
-    <link rel="prev" title="[Advanced] Backend development" href="user_guide/backend_development/index.html" />
+    <link rel="prev" title="Contributing" href="contributing.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
         // have to make do with hacky javascript redirection :(
@@ -80,9 +80,9 @@
           <a href="errbot.backends.html" title="errbot.backends package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="user_guide/backend_development/index.html" title="[Advanced] Backend development"
+          <a href="contributing.html" title="Contributing"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       
@@ -200,6 +200,7 @@
 <code class="descname">build_identifier</code><span class="sig-paren">(</span><em>txtrep: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/errbot/botplugin.html#BotPlugin.build_identifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.BotPlugin.build_identifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform a textual representation of a user or room identifier to the correct
 Identifier object you can set in Message.to and Message.frm.
+:type txtrep: <code class="docutils literal"><span class="pre">str</span></code>
 :param txtrep: the textual representation of the identifier (it is backend dependent).</p>
 </dd></dl>
 
@@ -213,7 +214,7 @@ the bot itself (including those from other plugins).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Message" title="errbot.backends.base.Message"><code class="xref py py-class docutils literal"><span class="pre">Message</span></code></a>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> (<a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Message" title="errbot.backends.base.Message"><code class="xref py py-class docutils literal"><span class="pre">Message</span></code></a>) -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Message" title="errbot.backends.base.Message"><code class="xref py py-class docutils literal"><span class="pre">Message</span></code></a>
 representing the message that was received.</td>
 </tr>
 </tbody>
@@ -236,7 +237,7 @@ representing the message that was received.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> -- representing the message that was received.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> (<a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Message" title="errbot.backends.base.Message"><code class="xref py py-class docutils literal"><span class="pre">Message</span></code></a>) -- representing the message that was received.</td>
 </tr>
 </tbody>
 </table>
@@ -250,7 +251,7 @@ representing the message that was received.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>presence</strong> -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Presence" title="errbot.backends.base.Presence"><code class="xref py py-class docutils literal"><span class="pre">Presence</span></code></a>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>presence</strong> (<a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Presence" title="errbot.backends.base.Presence"><code class="xref py py-class docutils literal"><span class="pre">Presence</span></code></a>) -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Presence" title="errbot.backends.base.Presence"><code class="xref py py-class docutils literal"><span class="pre">Presence</span></code></a>
 representing the new presence state that was received.</td>
 </tr>
 </tbody>
@@ -265,7 +266,7 @@ representing the new presence state that was received.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> (<a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>) -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>
 representing the room that was joined.</td>
 </tr>
 </tbody>
@@ -280,7 +281,7 @@ representing the room that was joined.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> (<a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>) -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>
 representing the room that was left.</td>
 </tr>
 </tbody>
@@ -295,7 +296,7 @@ representing the room that was left.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> (<a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>) -- An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>
 representing the room for which the topic changed.</td>
 </tr>
 </tbody>
@@ -310,6 +311,7 @@ request or file transfert requests.
 You can block this call until you are done with the stream.
 To signal that you accept / reject the file, simply call stream.accept()
 or stream.reject() and return.
+:type stream: <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Stream" title="errbot.backends.base.Stream"><code class="xref py py-class docutils literal"><span class="pre">Stream</span></code></a>
 :param stream:</p>
 <blockquote>
 <div>the incoming stream request.</div></blockquote>
@@ -325,8 +327,8 @@ or stream.reject() and return.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>status</strong> -- One of the constant defined in base.py : ONLINE, OFFLINE, DND,...</li>
-<li><strong>message</strong> -- Additional message</li>
+<li><strong>status</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- One of the constant defined in base.py : ONLINE, OFFLINE, DND,...</li>
+<li><strong>message</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- Additional message</li>
 </ul>
 </td>
 </tr>
@@ -353,6 +355,7 @@ be called.</p>
 same type of first element of the template (no mix typed is supported)</li>
 </ol>
 <p>In case of validation error it should raise a errbot.utils.ValidationException
+:type configuration: <code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code>
 :param configuration: the configuration to be checked.</p>
 </dd></dl>
 
@@ -364,6 +367,7 @@ field of your plugin. If this plugin has no configuration yet, the framework
 will call this function anyway with None.</p>
 <p>This method will be called before activation so don't expect to be activated
 at that point.
+:type configuration: <code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code>
 :param configuration: injected configuration for the plugin.</p>
 </dd></dl>
 
@@ -400,9 +404,9 @@ return {'LOGIN' : <a class="reference external" href="mailto:'example&#37;&#52;&
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>room</strong> -- The JID/identifier of the room to join.</li>
-<li><strong>username</strong> -- An optional username to use.</li>
-<li><strong>password</strong> -- An optional password to use (for password-protected rooms).</li>
+<li><strong>room</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The JID/identifier of the room to join.</li>
+<li><strong>username</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- An optional username to use.</li>
+<li><strong>password</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- An optional password to use (for password-protected rooms).</li>
 </ul>
 </td>
 </tr>
@@ -436,11 +440,13 @@ minimum version. It MUST be in a 3 dotted numbers format or None</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> -- The JID/identifier of the room to query for.</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>.</td>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The JID/identifier of the room to query for.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.RoomDoesNotExistError" title="errbot.backends.base.RoomDoesNotExistError"><code class="xref py py-class docutils literal"><span class="pre">RoomDoesNotExistError</span></code></a> if the room doesn't exist.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.RoomDoesNotExistError" title="errbot.backends.base.RoomDoesNotExistError"><code class="xref py py-class docutils literal"><span class="pre">RoomDoesNotExistError</span></code></a> if the room doesn't exist.</td>
 </tr>
 </tbody>
 </table>
@@ -457,19 +463,25 @@ minimum version. It MUST be in a 3 dotted numbers format or None</p>
 <code class="descname">send</code><span class="sig-paren">(</span><em>user: object</em>, <em>text: str</em>, <em>in_reply_to: errbot.backends.base.Message=None</em>, <em>message_type: str='chat'</em>, <em>groupchat_nick_reply: bool=False</em><span class="sig-paren">)</span> &rarr; None<a class="reference internal" href="_modules/errbot/botplugin.html#BotPlugin.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.BotPlugin.send" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Sends asynchronously a message to a room or a user.</dt>
-<dd>if it is a room message_type needs to by 'groupchat' and user the room.
-:param groupchat_nick_reply: if True it will mention the user in the chatroom.
-:param message_type: 'chat' or 'groupchat'
-:param in_reply_to: optionally, the original message this message is the answer to.
-:param text: markdown formatted text to send to the user.
-:param user: identifier of the user to which you want to send a message to. see build_identifier.</dd>
+<dd>if it is a room message_type needs to by 'groupchat' and user the room.</dd>
 </dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="errbot.BotPlugin.send_stream_request">
 <code class="descname">send_stream_request</code><span class="sig-paren">(</span><em>user: errbot.backends.base.Identifier</em>, <em>fsource: io.IOBase</em>, <em>name: str=None</em>, <em>size: int=None</em>, <em>stream_type: str=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/errbot/botplugin.html#BotPlugin.send_stream_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.BotPlugin.send_stream_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends asynchronously a stream/file to a user.
+:type stream_type: <code class="docutils literal"><span class="pre">str</span></code>
+:type size: <code class="docutils literal"><span class="pre">int</span></code>
+:type name: <code class="docutils literal"><span class="pre">str</span></code>
+:type fsource: <code class="xref py py-class docutils literal"><span class="pre">IOBase</span></code>
+:type user: <a class="reference internal" href="errbot.backends.base.html#errbot.backends.base.Identifier" title="errbot.backends.base.Identifier"><code class="xref py py-class docutils literal"><span class="pre">Identifier</span></code></a>
 :param user: is the identifier of the person you want to send it to.
 :param fsource: is a file object you want to send.
 :param name: is an optional filename for it.
@@ -484,14 +496,13 @@ minimum version. It MUST be in a 3 dotted numbers format or None</p>
 <dd><p>Sends asynchronously a message to a room or a user.
 Same as send but passing a template name and parameters instead of directly the markdown text.</p>
 <blockquote>
-<div>if it is a room message_type needs to by 'groupchat' and user the room.
-:param template_parameters: arguments for the template.
-:param template_name: name of the template to use.
-:param groupchat_nick_reply: if True it will mention the user in the chatroom.
-:param message_type: 'chat' or 'groupchat'
-:param in_reply_to: optionally, the original message this message is the answer to.
-:param text: markdown formatted text to send to the user.
-:param user: identifier of the user to which you want to send a message to. see build_identifier.</div></blockquote>
+<div>if it is a room message_type needs to by 'groupchat' and user the room.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -502,6 +513,10 @@ Same as send but passing a template name and parameters instead of directly the 
 Also, you can program
 for example : self.program_poller(self, 30, fetch_stuff)
 where you have def fetch_stuff(self) in your plugin
+:type kwargs: <code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code>
+:type args: <code class="xref py py-class docutils literal"><span class="pre">Tuple</span></code>
+:type method: <code class="xref py py-class docutils literal"><span class="pre">Callable</span></code>
+:type interval: <code class="docutils literal"><span class="pre">float</span></code>
 :param kwargs: kwargs for the method to callback.
 :param args: args for the method to callback.
 :param method: method to callback.
@@ -514,6 +529,9 @@ where you have def fetch_stuff(self) in your plugin
 <dd><p>stop poller(s).</p>
 <p>If the method equals None -&gt; it stops all the pollers
 you need to regive the same parameters as the original start_poller to match a specific poller to stop
+:type kwargs: <code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code>
+:type args: <code class="xref py py-class docutils literal"><span class="pre">Tuple</span></code>
+:type method: <code class="xref py py-class docutils literal"><span class="pre">Callable</span></code>
 :param kwargs: The initial kwargs you gave to start_poller.
 :param args: The initial args you gave to start_poller.
 :param method: The initial method you passed to start_poller.</p>
@@ -523,6 +541,7 @@ you need to regive the same parameters as the original start_poller to match a s
 <dt id="errbot.BotPlugin.warn_admins">
 <code class="descname">warn_admins</code><span class="sig-paren">(</span><em>warning: str</em><span class="sig-paren">)</span> &rarr; None<a class="reference internal" href="_modules/errbot/botplugin.html#BotPlugin.warn_admins"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.BotPlugin.warn_admins" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a warning to the administrators of the bot
+:type warning: <code class="docutils literal"><span class="pre">str</span></code>
 :param warning: mardown formatted text of the warning.</p>
 </dd></dl>
 
@@ -536,16 +555,19 @@ you need to regive the same parameters as the original start_poller to match a s
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal"><span class="pre">Callable</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>uri_rule</strong> -- A regular expression against which the called URL should
 match in order for the webhook to trigger. If left undefined then the URL
 <cite>/&lt;method_name&gt;/</cite> will be used instead.</li>
-<li><strong>methods</strong> -- A tuple of allowed HTTP methods. By default, only GET and POST
+<li><strong>methods</strong> (<code class="xref py py-class docutils literal"><span class="pre">Tuple</span></code>) -- A tuple of allowed HTTP methods. By default, only GET and POST
 are allowed.</li>
-<li><strong>form_param</strong> -- The key who's contents will be passed to your method's <cite>payload</cite>
+<li><strong>form_param</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The key who's contents will be passed to your method's <cite>payload</cite>
 parameter. This is used for example when using the <cite>application/x-www-form-urlencoded</cite>
 mimetype.</li>
-<li><strong>raw</strong> -- Boolean to overrides the request decoding (including form_param) and
+<li><strong>raw</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Boolean to overrides the request decoding (including form_param) and
 passes the raw http request to your method's <cite>payload</cite>.
 The passed type in payload will provide the BaseRequest interface as defined here:
 <a class="reference external" href="http://bottlepy.org/docs/dev/api.html#bottle.BaseRequest">http://bottlepy.org/docs/dev/api.html#bottle.BaseRequest</a></li>
@@ -579,15 +601,18 @@ The bundled <em>Webserver</em> plugin needs to be configured before these URL's 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>hidden</strong> -- Prevents the command from being shown by the built-in help command when <cite>True</cite>.</li>
-<li><strong>name</strong> -- The name to give to the command. Defaults to name of the function itself.</li>
-<li><strong>split_args_with</strong> -- Automatically split arguments on the given separator.
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal"><span class="pre">Callable</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hidden</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Prevents the command from being shown by the built-in help command when <cite>True</cite>.</li>
+<li><strong>name</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The name to give to the command. Defaults to name of the function itself.</li>
+<li><strong>split_args_with</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- Automatically split arguments on the given separator.
 Behaviour of this argument is identical to <code class="xref py py-func docutils literal"><span class="pre">str.split()</span></code></li>
-<li><strong>admin_only</strong> -- Only allow the command to be executed by admins when <cite>True</cite>.</li>
-<li><strong>historize</strong> -- Store the command in the history list (<cite>!history</cite>). This is enabled
+<li><strong>admin_only</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Only allow the command to be executed by admins when <cite>True</cite>.</li>
+<li><strong>historize</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Store the command in the history list (<cite>!history</cite>). This is enabled
 by default.</li>
-<li><strong>template</strong> -- The markdown template to use.</li>
+<li><strong>template</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The markdown template to use.</li>
 </ul>
 </td>
 </tr>
@@ -615,23 +640,26 @@ were given to the command by the user.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>pattern</strong> -- The regular expression a message should match against in order to
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal"><span class="pre">Callable</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pattern</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The regular expression a message should match against in order to
 trigger the command.</li>
-<li><strong>flags</strong> -- The <cite>flags</cite> parameter which should be passed to <code class="xref py py-func docutils literal"><span class="pre">re.compile()</span></code>. This
+<li><strong>flags</strong> (<code class="docutils literal"><span class="pre">int</span></code>) -- The <cite>flags</cite> parameter which should be passed to <code class="xref py py-func docutils literal"><span class="pre">re.compile()</span></code>. This
 allows the expression's behaviour to be modified, such as making it case-insensitive
 for example.</li>
-<li><strong>matchall</strong> -- By default, only the first match of the regular expression is returned
+<li><strong>matchall</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- By default, only the first match of the regular expression is returned
 (as a <cite>re.MatchObject</cite>). When <em>matchall</em> is <cite>True</cite>, all non-overlapping matches are
 returned (as a list of <cite>re.MatchObject</cite> items).</li>
-<li><strong>prefixed</strong> -- Requires user input to start with a bot prefix in order for the pattern
+<li><strong>prefixed</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Requires user input to start with a bot prefix in order for the pattern
 to be applied when <cite>True</cite> (the default).</li>
-<li><strong>hidden</strong> -- Prevents the command from being shown by the built-in help command when <cite>True</cite>.</li>
-<li><strong>name</strong> -- The name to give to the command. Defaults to name of the function itself.</li>
-<li><strong>admin_only</strong> -- Only allow the command to be executed by admins when <cite>True</cite>.</li>
-<li><strong>historize</strong> -- Store the command in the history list (<cite>!history</cite>). This is enabled
+<li><strong>hidden</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Prevents the command from being shown by the built-in help command when <cite>True</cite>.</li>
+<li><strong>name</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The name to give to the command. Defaults to name of the function itself.</li>
+<li><strong>admin_only</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Only allow the command to be executed by admins when <cite>True</cite>.</li>
+<li><strong>historize</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Store the command in the history list (<cite>!history</cite>). This is enabled
 by default.</li>
-<li><strong>template</strong> -- The template to use when using XHTML-IM output</li>
+<li><strong>template</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The template to use when using XHTML-IM output</li>
 </ul>
 </td>
 </tr>
@@ -664,14 +692,17 @@ Each time this decorator is used it adds a new argparse argument to the command.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>hidden</strong> -- Prevents the command from being shown by the built-in help command when <cite>True</cite>.</li>
-<li><strong>name</strong> -- The name to give to the command. Defaults to name of the function itself.</li>
-<li><strong>admin_only</strong> -- Only allow the command to be executed by admins when <cite>True</cite>.</li>
-<li><strong>historize</strong> -- Store the command in the history list (<cite>!history</cite>). This is enabled
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal"><span class="pre">Callable</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hidden</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Prevents the command from being shown by the built-in help command when <cite>True</cite>.</li>
+<li><strong>name</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The name to give to the command. Defaults to name of the function itself.</li>
+<li><strong>admin_only</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Only allow the command to be executed by admins when <cite>True</cite>.</li>
+<li><strong>historize</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Store the command in the history list (<cite>!history</cite>). This is enabled
 by default.</li>
-<li><strong>template</strong> -- The template to use when using XHTML-IM output</li>
-<li><strong>unpack_args</strong> -- Should the argparser arguments be &quot;unpacked&quot; and passed on the the bot
+<li><strong>template</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The template to use when using XHTML-IM output</li>
+<li><strong>unpack_args</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Should the argparser arguments be &quot;unpacked&quot; and passed on the the bot
 command individually? If this is True (the default) you must define all arguments in the
 function separately. If this is False you must define a single argument <cite>args</cite> (or
 whichever name you prefer) to receive the result of <cite>ArgumentParser.parse_args()</cite>.</li>
@@ -714,7 +745,7 @@ statement.</p>
   <div id="prev_next_links">
       
           
-              Previous: <a href="user_guide/backend_development/index.html">[Advanced] Backend development</a>
+              Previous: <a href="contributing.html">Contributing</a>
           
           
                | 
@@ -752,7 +783,7 @@ statement.</p>
     <li><a href="genindex.html">Index</a></li>
     <li><a href="py-modindex.html">Module index</a></li>
     <li><a href="modules.html">API reference</a></li>
-        <li>Previous: <a href="user_guide/backend_development/index.html" title="previous chapter">[Advanced] Backend development</a></li>
+        <li>Previous: <a href="contributing.html" title="previous chapter">Contributing</a></li>
         <li>Next: <a href="errbot.backends.html" title="next chapter">errbot.backends package</a></li>
 </ul>
   <div role="note" aria-label="source link">
@@ -802,15 +833,15 @@ statement.</p>
           <a href="errbot.backends.html" title="errbot.backends package"
              >next</a> |</li>
         <li class="right" >
-          <a href="user_guide/backend_development/index.html" title="[Advanced] Backend development"
+          <a href="contributing.html" title="Contributing"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

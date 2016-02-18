@@ -1,0 +1,7 @@
+errbot.storage.shelf module
+===========================
+
+.. automodule:: errbot.storage.shelf
+    :members:
+    :undoc-members:
+    :show-inheritance:

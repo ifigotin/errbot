@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setup &mdash; Err 3.2.1 documentation</title>
+    <title>Setup &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="../index.html" />
-    <link rel="next" title="Interacting with the Bot" href="interaction.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="../index.html" />
+    <link rel="next" title="XMPP backend configuration" href="configuration/xmpp.html" />
     <link rel="prev" title="Multiple server back-ends" href="../features.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -77,12 +77,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="interaction.html" title="Interacting with the Bot"
+          <a href="configuration/xmpp.html" title="XMPP backend configuration"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../features.html" title="Multiple server back-ends"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       
@@ -103,7 +103,7 @@ it is recommended (but not required) to have a least one MUC for Errbot to use a
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Errbot may be installed directly from PyPi using <cite>pip</cite> (<cite>easy_install</cite> works too) by issuing:</p>
+<p>Errbot may be installed directly from PyPi using <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a> by issuing:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install errbot
 </pre></div>
 </div>
@@ -111,48 +111,114 @@ it is recommended (but not required) to have a least one MUC for Errbot to use a
 <div class="highlight-python"><div class="highlight"><pre>pip install https://github.com/errbotio/errbot/archive/master.zip
 </pre></div>
 </div>
-<p>However, in these cases, installing into a dedicated <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> is recommended.</p>
-<p>On some distributions, Errbot is available as a package via your usual package manager.
-In these cases, it is generally recommended to use your distribution's package instead
-of installing from PyPi.</p>
+<p>However, installing into a <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> is <strong>strongly</strong> recommended.
+If you have virtualenv installed,
+you could instead do:</p>
+<div class="highlight-python"><div class="highlight"><pre># Create the virtualenv
+virtualenv --python /usr/bin/python3 /path/to/my/virtualenv
+# Use pip from the virtualenv instead of the global pip
+# to install errbot
+/path/to/my/virtualenv/bin/pip install errbot
+</pre></div>
+</div>
+<p>On some distributions,
+Errbot is also available as a package
+via your usual package manager.
+In these cases, it is generally recommended to use your distribution's package
+instead of installing from PyPi
+but note that the version packaged with your distribution
+may be a few versions behind.</p>
 <div class="section" id="extra-dependencies">
 <h3>Extra dependencies<a class="headerlink" href="#extra-dependencies" title="Permalink to this headline">¶</a></h3>
-<p>requirements.txt lists only the bare minimum list of dependencies needed to run Errbot.
-Depending on the backend you choose, additional requirements need to be installed.</p>
-<p>For the XMPP based backends you must also install:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sleekxmpp</span>
-<span class="n">pyasn1</span>
-<span class="n">pyasn1</span><span class="o">-</span><span class="n">modules</span>
-<span class="n">dnspython3</span>  <span class="c"># dnspython for Python 2.7</span>
+<p>Errbot's default dependency list
+contains only the bare minimum list of dependencies
+needed to run Errbot.
+Depending on the backend you choose,
+additional requirements need to be installed.</p>
+<p>This means that you will need to install some extra dependencies
+to make use of the backend suitable for the chat network you are using.</p>
+<ul>
+<li><p class="first">For XMPP servers:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install sleekxmpp pyasn1 pyasn1-modules
 </pre></div>
 </div>
-<p>For the IRC backend, you must install:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">irc</span>
+</li>
+<li><p class="first">For IRC servers:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install irc
 </pre></div>
 </div>
-<p>For the Hipchat backend you must install:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">hypchat</span>
+</li>
+<li><p class="first">For HipChat:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install sleekxmpp pyasn1 pyasn1-modules hypchat
 </pre></div>
 </div>
+</li>
+<li><p class="first">For Slack:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install slackclient
+</pre></div>
+</div>
+</li>
+<li><p class="first">For Telegram messenger:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install python-telegram-bot
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>After installing Errbot, you must create a data directory somewhere on your system where
-config and data may be stored.</p>
-<p>You need to create there a config.py file to setup the basic parameters of your bot.</p>
-<p>Option 1: you can generate it directly from your errbot installation with:</p>
-<div class="highlight-python"><div class="highlight"><pre>python -c &quot;import errbot;import os;import shutil;shutil.copyfile(os.path.dirname(errbot.__file__) + os.path.sep + &#39;config-template.py&#39;, &#39;config.py&#39;)&quot;
-</pre></div>
+<p>Once you have installed errbot,
+you will have to configure it to connect to your desired chat network.
+First, create a directory somewhere on your system
+where errbot may store its configuration and data.</p>
+<p>Once you have created the directory,
+change into it and copy the default configuration file into place.
+There are two ways to do this:</p>
+<ol class="arabic">
+<li><p class="first">You can generate it directly from your errbot installation with:</p>
+<blockquote>
+<div><p><cite>python -c &quot;import errbot;import os;import shutil;shutil.copyfile(os.path.dirname(errbot.__file__) + os.path.sep + 'config-template.py', 'config.py')</cite></p>
+</div></blockquote>
+</li>
+<li><p class="first">Or you can download the template manually from <a class="reference external" href="https://raw.githubusercontent.com/errbotio/errbot/master/errbot/config-template.py">GitHub</a> and save it as <cite>config.py</cite>.</p>
+<dl class="docutils">
+<dt>You could also do this on the command-line with the following command:</dt>
+<dd><p class="first last"><cite>curl -o config.py https://raw.githubusercontent.com/errbotio/errbot/master/errbot/config-template.py</cite></p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>You will have to edit the values in this file to setup the desired configuration for the bot.
+The example configuration comes with extensive documenation of all the various options
+so we won't go into too much detail here,
+but we'll go through the options that you absolutely must change now
+so that you can quickly get started
+and make further tweaks to the configuration later on.</p>
+<p>Please open <cite>config.py</cite> in your favorite editor now.
+The first setting we must change is <cite>BOT_DATA_DIR</cite>.
+This is the directory where the bot will store configuration data.
+Set this to the directory you created earlier.</p>
+<p>The default value for <cite>BOT_LOG_FILE</cite> likely points to a directory
+which doesn't exist on your system,
+so you must change this as well.
+One suggestion is to set the value as <cite>BOT_LOG_FILE = BOT_DATA_DIR + '/errbot.log'</cite>.
+This will make it write a file <cite>errbot.log</cite> in the same data directory
+that you configured above.</p>
+<p>The final configuration we absolutely must do is setting up a correct <cite>BACKEND</cite>
+and configuring <cite>BOT_IDENTITY</cite> with the details of the account that you wish to use.</p>
+<p>The configuration for these settings differs depending on which chat network you wish to connect to,
+so please refer to the documentation for your desired network
+from the following list:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration/xmpp.html">XMPP backend configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/irc.html">IRC backend configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/hipchat.html">HipChat backend configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/slack.html">Slack backend configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/telegram.html">Telegram backend configuration</a></li>
+</ul>
 </div>
-<p>Option 2: You can download a template from <a class="reference external" href="https://raw.githubusercontent.com/errbotio/errbot/master/errbot/config-template.py">this link</a>
-and rename it <cite>config.py</cite>.</p>
-<p>Option 3: Or you can download this same template from curl too:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -o config.py https://raw.githubusercontent.com/errbotio/errbot/master/errbot/config-template.py
-</pre></div>
-</div>
-<p>Read the documentation within this file and edit the values as needed so the bot can
-connect to your favorite chat server.</p>
 </div>
 <div class="section" id="starting-the-daemon">
 <h2>Starting the daemon<a class="headerlink" href="#starting-the-daemon" title="Permalink to this headline">¶</a></h2>
@@ -161,11 +227,18 @@ be done with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">errbot</span>
 </pre></div>
 </div>
+<p>If you installed errbot into a virtualenv (as recommended),
+call it by prefixing the virtualenv <cite>bin/</cite> directory:</p>
+<div class="highlight-python"><div class="highlight"><pre>/path/to/my/virtualenv/bin/errbot
+</pre></div>
+</div>
 <p>Please pass -h or --help to errbot to get a list of supported parameters.
-Depending on your situation, you may need to pass --config (or -c) pointing to config.py
+Depending on your situation,
+you may need to pass --config (or -c)
+pointing to the directory holding your <cite>config.py</cite>
 when starting Errbot.</p>
-<p>If all that worked out, you can now use the -d (or --daemon) parameter to run it in a
-detached mode:</p>
+<p>If all that worked out,
+you can now use the -d (or --daemon) parameter to run it in a detached mode:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">errbot</span> <span class="o">--</span><span class="n">daemon</span>
 </pre></div>
 </div>
@@ -193,7 +266,7 @@ If you wish to develop or test with Errbot's code under 2.7, you must run:</p>
           
           
                | 
-              Next: <a href="interaction.html">Interacting with the Bot</a>
+              Next: <a href="configuration/xmpp.html">XMPP backend configuration</a>
           
       
   </div>
@@ -233,7 +306,7 @@ If you wish to develop or test with Errbot's code under 2.7, you must run:</p>
     <li><a href="../py-modindex.html">Module index</a></li>
     <li><a href="../modules.html">API reference</a></li>
         <li>Previous: <a href="../features.html" title="previous chapter">Multiple server back-ends</a></li>
-        <li>Next: <a href="interaction.html" title="next chapter">Interacting with the Bot</a></li>
+        <li>Next: <a href="configuration/xmpp.html" title="next chapter">XMPP backend configuration</a></li>
 </ul>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -279,18 +352,18 @@ If you wish to develop or test with Errbot's code under 2.7, you must run:</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="interaction.html" title="Interacting with the Bot"
+          <a href="configuration/xmpp.html" title="XMPP backend configuration"
              >next</a> |</li>
         <li class="right" >
           <a href="../features.html" title="Multiple server back-ends"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

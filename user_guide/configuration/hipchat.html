@@ -1,0 +1,262 @@
+
+    <!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HipChat backend configuration &mdash; Err 3.2.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="up" title="Setup" href="../setup.html" />
+    <link rel="next" title="Slack backend configuration" href="slack.html" />
+    <link rel="prev" title="IRC backend configuration" href="irc.html" />
+    <script type="text/javascript">
+        // GitHub pages offers no way to redirect to a canonical location, so we
+        // have to make do with hacky javascript redirection :(
+        if (document.location.protocol != "file:" && document.location.host != "errbot.io") {
+            var path = document.location.pathname.replace('/err/', '/');
+            document.location = "http://errbot.io" + path;
+        }
+    </script>
+    <link rel="icon" type="image/png" href="../../_static/err.png"/>
+    <link rel="apple-touch-icon" href="../../_static/err.png"/>
+    <link rel="stylesheet" href="../../_static/fancybox/jquery.fancybox.css" type="text/css"
+          media="screen"/>
+    <script type="text/javascript" src="../../_static/fancybox/jquery.fancybox.pack.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9"/>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32534172-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+        // Gitter button
+        ((window.gitter = {}).chat = {}).options = {
+             room: 'errbotio/errbot'
+        };
+   </script>
+   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+  </head>
+  <body role="document">
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="slack.html" title="Slack backend configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="irc.html" title="IRC backend configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" accesskey="U">Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hipchat-backend-configuration">
+<h1>HipChat backend configuration<a class="headerlink" href="#hipchat-backend-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This backend lets you connect to the
+<a class="reference external" href="https://hipchat.com/">HipChat</a> messaging service.
+To select this backend,
+set <cite>BACKEND = 'Hipchat'</cite>.</p>
+<div class="section" id="account-setup">
+<h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">¶</a></h2>
+<p>You will first need to create a regular user account for the bot to use.
+Once you have an account for errbot to use,
+login at HipChat and go into the account settings for the user.</p>
+<p>You will need to create an API token under <strong>API access</strong>.
+Make sure it has all available scopes
+otherwise some functionality will be unavailable,
+which may prevent the bot from working correctly at all.</p>
+<p>With the API token created,
+continue on to <strong>XMPP/Jabber info</strong>.
+You will be needing the <cite>Jabber ID</cite> which is listed here.</p>
+<p>You can now configure the account by setting up <cite>BOT_IDENTITY</cite> as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre>BOT_IDENTITY = {
+    &#39;username&#39; : &#39;12345_123456@chat.hipchat.com&#39;,
+    &#39;password&#39; : &#39;changeme&#39;,
+    # Group admins can create/view tokens on the settings page after logging
+    # in on HipChat&#39;s website
+    &#39;token&#39;    : &#39;ed4b74d62833267d98aa99f312ff04&#39;,
+    # If you&#39;re using HipChat server (self-hosted HipChat) then you should set
+    # the endpoint below. If you don&#39;t use HipChat server but use the hosted version
+    # of HipChat then you may leave this commented out.
+    # &#39;endpoint&#39; : &#39;https://api.hipchat.com&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="bot-admins">
+<h2>Bot admins<a class="headerlink" href="#bot-admins" title="Permalink to this headline">¶</a></h2>
+<p>You can set <cite>BOT_ADMINS</cite> to configure which Slack users are bot administrators.
+Make sure to include the <cite>&#64;</cite> sign.
+For example: <cite>BOT_ADMINS = ('&#64;gbin', '&#64;zoni')</cite></p>
+</div>
+<div class="section" id="rooms">
+<h2>Rooms<a class="headerlink" href="#rooms" title="Permalink to this headline">¶</a></h2>
+<p>You can let the bot join rooms (that it has access to) by setting up <cite>CHATROOM_PRESENCE</cite>.
+For example: <cite>CHATROOM_PRESENCE = ('General', 'Another room')</cite></p>
+<p>You must also set the correct value for <cite>CHATROOM_FN</cite>.
+This <strong>must</strong> be set to the value of <cite>Room nickname</cite>
+which can be found in the HipChat account settings under <strong>XMPP/Jabber info</strong>.</p>
+</div>
+<div class="section" id="mentions">
+<h2>&#64;mentions<a class="headerlink" href="#mentions" title="Permalink to this headline">¶</a></h2>
+<p>To make the bot respond when it is mentioned (such as with <em>&quot;&#64;errbot status&quot;</em>)
+we recommend also setting <cite>BOT_ALT_PREFIXES = ('&#64;errbot',)</cite>
+(assuming <cite>errbot</cite> is the username of the account you're using for the bot).</p>
+</div>
+</div>
+
+  <div id="prev_next_links">
+      
+          
+              Previous: <a href="irc.html">IRC backend configuration</a>
+          
+          
+               | 
+              Next: <a href="slack.html">Slack backend configuration</a>
+          
+      
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a class="logo" href="../../index.html" title="Back to home page">
+        <img class="logo" src="../../_static/err_speech.png" width="220" height="135" alt="Logo of Err"/>
+    </a>
+    <div class="ghbuttons">
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=fork&count=true" allowtransparency="true"
+                frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    </div>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HipChat backend configuration</a><ul>
+<li><a class="reference internal" href="#account-setup">Account setup</a></li>
+<li><a class="reference internal" href="#bot-admins">Bot admins</a></li>
+<li><a class="reference internal" href="#rooms">Rooms</a></li>
+<li><a class="reference internal" href="#mentions">&#64;mentions</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+    <li><a href="../../index.html">Homepage</a></li>
+    <li><a href="../../genindex.html">Index</a></li>
+    <li><a href="../../py-modindex.html">Module index</a></li>
+    <li><a href="../../modules.html">API reference</a></li>
+        <li>
+        <a href="../setup.html">Setup</a>
+        <ul>
+        <li>Previous: <a href="irc.html" title="previous chapter">IRC backend configuration</a></li>
+        <li>Next: <a href="slack.html" title="next chapter">Slack backend configuration</a></li>
+        </ul>
+        </li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/user_guide/configuration/hipchat.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.fancybox').fancybox({
+                padding: 0,
+                openEffect: 'elastic'
+            });
+        });
+    </script>
+    <div class="relbar2">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="slack.html" title="Slack backend configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="irc.html" title="IRC backend configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" >Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
+          Last updated on Feb 18, 2016.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+    
+  </body>
+</html>

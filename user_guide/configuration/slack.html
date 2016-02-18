@@ -1,0 +1,251 @@
+
+    <!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Slack backend configuration &mdash; Err 3.2.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="up" title="Setup" href="../setup.html" />
+    <link rel="next" title="Telegram backend configuration" href="telegram.html" />
+    <link rel="prev" title="HipChat backend configuration" href="hipchat.html" />
+    <script type="text/javascript">
+        // GitHub pages offers no way to redirect to a canonical location, so we
+        // have to make do with hacky javascript redirection :(
+        if (document.location.protocol != "file:" && document.location.host != "errbot.io") {
+            var path = document.location.pathname.replace('/err/', '/');
+            document.location = "http://errbot.io" + path;
+        }
+    </script>
+    <link rel="icon" type="image/png" href="../../_static/err.png"/>
+    <link rel="apple-touch-icon" href="../../_static/err.png"/>
+    <link rel="stylesheet" href="../../_static/fancybox/jquery.fancybox.css" type="text/css"
+          media="screen"/>
+    <script type="text/javascript" src="../../_static/fancybox/jquery.fancybox.pack.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9"/>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32534172-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+        // Gitter button
+        ((window.gitter = {}).chat = {}).options = {
+             room: 'errbotio/errbot'
+        };
+   </script>
+   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+  </head>
+  <body role="document">
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="telegram.html" title="Telegram backend configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hipchat.html" title="HipChat backend configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" accesskey="U">Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="slack-backend-configuration">
+<h1>Slack backend configuration<a class="headerlink" href="#slack-backend-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This backend lets you connect to the
+<a class="reference external" href="https://slack.com/">Slack</a> messaging service.
+To select this backend,
+set <cite>BACKEND = 'Slack'</cite>.</p>
+<div class="section" id="account-setup">
+<h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">¶</a></h2>
+<p>You will need to have an account at Slack for the bot to use,
+either a bot account (recommended) or a regular user account.</p>
+<p>We will assume you're using a bot account for errbot,
+which <a class="reference external" href="https://my.slack.com/services/new/bot">may be created here</a>.
+Make note of the <strong>API Token</strong> you receive as you will need it next.</p>
+<p>With the bot account created on Slack,
+you may configure the account in errbot
+by setting up <cite>BOT_IDENTITY</cite> as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">BOT_IDENTITY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;token&#39;</span><span class="p">:</span> <span class="s">&#39;xoxb-4426949411-aEM7...&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bot-admins">
+<h2>Bot admins<a class="headerlink" href="#bot-admins" title="Permalink to this headline">¶</a></h2>
+<p>You can set <cite>BOT_ADMINS</cite> to configure which Slack users are bot administrators.
+Make sure to include the <cite>&#64;</cite> sign.
+For example: <cite>BOT_ADMINS = ('&#64;gbin', '&#64;zoni')</cite></p>
+</div>
+<div class="section" id="channels-groups">
+<h2>Channels/groups<a class="headerlink" href="#channels-groups" title="Permalink to this headline">¶</a></h2>
+<p>If you're using a bot account you should set <cite>CHATROOM_PRESENCE = ()</cite>.
+Bot accounts on Slack are not allowed to join/leave channels on their own
+(they must be invited by a user instead)
+so having any rooms setup in <cite>CHATROOM_PRESENCE</cite> will result in an error.</p>
+<p>If you are using a regular user account for the bot
+then you can set <cite>CHATROOM_PRESENCE</cite> to a list of channels and groups to join.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may leave the value for <cite>CHATROOM_FN</cite> at its default
+as it is ignored by this backend.</p>
+</div>
+</div>
+</div>
+
+  <div id="prev_next_links">
+      
+          
+              Previous: <a href="hipchat.html">HipChat backend configuration</a>
+          
+          
+               | 
+              Next: <a href="telegram.html">Telegram backend configuration</a>
+          
+      
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a class="logo" href="../../index.html" title="Back to home page">
+        <img class="logo" src="../../_static/err_speech.png" width="220" height="135" alt="Logo of Err"/>
+    </a>
+    <div class="ghbuttons">
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=fork&count=true" allowtransparency="true"
+                frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    </div>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Slack backend configuration</a><ul>
+<li><a class="reference internal" href="#account-setup">Account setup</a></li>
+<li><a class="reference internal" href="#bot-admins">Bot admins</a></li>
+<li><a class="reference internal" href="#channels-groups">Channels/groups</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+    <li><a href="../../index.html">Homepage</a></li>
+    <li><a href="../../genindex.html">Index</a></li>
+    <li><a href="../../py-modindex.html">Module index</a></li>
+    <li><a href="../../modules.html">API reference</a></li>
+        <li>
+        <a href="../setup.html">Setup</a>
+        <ul>
+        <li>Previous: <a href="hipchat.html" title="previous chapter">HipChat backend configuration</a></li>
+        <li>Next: <a href="telegram.html" title="next chapter">Telegram backend configuration</a></li>
+        </ul>
+        </li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/user_guide/configuration/slack.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.fancybox').fancybox({
+                padding: 0,
+                openEffect: 'elastic'
+            });
+        });
+    </script>
+    <div class="relbar2">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="telegram.html" title="Telegram backend configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hipchat.html" title="HipChat backend configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" >Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
+          Last updated on Feb 18, 2016.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+    
+  </body>
+</html>

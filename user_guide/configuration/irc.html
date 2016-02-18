@@ -1,0 +1,279 @@
+
+    <!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>IRC backend configuration &mdash; Err 3.2.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="up" title="Setup" href="../setup.html" />
+    <link rel="next" title="HipChat backend configuration" href="hipchat.html" />
+    <link rel="prev" title="XMPP backend configuration" href="xmpp.html" />
+    <script type="text/javascript">
+        // GitHub pages offers no way to redirect to a canonical location, so we
+        // have to make do with hacky javascript redirection :(
+        if (document.location.protocol != "file:" && document.location.host != "errbot.io") {
+            var path = document.location.pathname.replace('/err/', '/');
+            document.location = "http://errbot.io" + path;
+        }
+    </script>
+    <link rel="icon" type="image/png" href="../../_static/err.png"/>
+    <link rel="apple-touch-icon" href="../../_static/err.png"/>
+    <link rel="stylesheet" href="../../_static/fancybox/jquery.fancybox.css" type="text/css"
+          media="screen"/>
+    <script type="text/javascript" src="../../_static/fancybox/jquery.fancybox.pack.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9"/>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32534172-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+        // Gitter button
+        ((window.gitter = {}).chat = {}).options = {
+             room: 'errbotio/errbot'
+        };
+   </script>
+   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+  </head>
+  <body role="document">
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hipchat.html" title="HipChat backend configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="xmpp.html" title="XMPP backend configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" accesskey="U">Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="irc-backend-configuration">
+<h1>IRC backend configuration<a class="headerlink" href="#irc-backend-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This backend lets you connect to any IRC server.
+To select this backend,
+set <cite>BACKEND = 'IRC'</cite>.</p>
+<div class="section" id="account-setup">
+<h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">¶</a></h2>
+<p>Configure the account by setting up <cite>BOT_IDENTITY</cite> as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">BOT_IDENTITY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;nickname&#39;</span> <span class="p">:</span> <span class="s">&#39;err-chatbot&#39;</span><span class="p">,</span>
+    <span class="c"># &#39;username&#39; : &#39;err-chatbot&#39;,    # optional, defaults to nickname if omitted</span>
+    <span class="c"># &#39;password&#39; : None,             # optional</span>
+    <span class="s">&#39;server&#39;</span> <span class="p">:</span> <span class="s">&#39;irc.freenode.net&#39;</span><span class="p">,</span>
+    <span class="c"># &#39;port&#39;: 6667,                  # optional</span>
+    <span class="c"># &#39;ssl&#39;: False,                  # optional</span>
+    <span class="c"># &#39;ipv6&#39;: False,                 # optional</span>
+    <span class="c"># &#39;nickserv_password&#39;: None,     # optional</span>
+
+    <span class="c">## Optional: Specify an IP address or hostname (vhost), and a</span>
+    <span class="c">## port, to use when making the connection. Leave port at 0</span>
+    <span class="c">## if you have no source port preference.</span>
+    <span class="c">##    example: &#39;bind_address&#39;: (&#39;my-errbot.io&#39;, 0)</span>
+    <span class="c"># &#39;bind_address&#39;: (&#39;localhost&#39;, 0),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You will at a minimum need to set the correct values for <cite>nickname</cite> and <cite>server</cite> above.
+The rest of the options can be left commented,
+but you may wish to set some of them.</p>
+</div>
+<div class="section" id="bot-admins">
+<h2>Bot admins<a class="headerlink" href="#bot-admins" title="Permalink to this headline">¶</a></h2>
+<p>You can set <cite>BOT_ADMINS</cite> to configure which IRC users are bot administrators.
+For example: <cite>BOT_ADMINS = ('gbin', 'zoni')</cite></p>
+</div>
+<div class="section" id="channels">
+<h2>Channels<a class="headerlink" href="#channels" title="Permalink to this headline">¶</a></h2>
+<p>If you want the bot to join a certain channel when it starts up
+then set <cite>CHATROOM_PRESENCE</cite> with a list of channels to join.
+For example: <cite>CHATROOM_PRESENCE = ('#errbotio',)</cite></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may leave the value for <cite>CHATROOM_FN</cite> at its default
+as it is ignored by this backend.</p>
+</div>
+</div>
+<div class="section" id="flood-protection">
+<h2>Flood protection<a class="headerlink" href="#flood-protection" title="Permalink to this headline">¶</a></h2>
+<p>Many IRC servers have floop protection enabled,
+which means the bot will get kicked out of a channel
+when sending too many messages
+in too short a time.</p>
+<p>Errbot has a built-in message ratelimiter to avoid this situation.
+You can enable it by setting <cite>IRC_CHANNEL_RATE</cite> and <cite>IRC_PRIVATE_RATE</cite>
+to ratelimit channel and private messages, respectively.</p>
+<p>The value for these options is a (floating-point) number of seconds to wait
+between each message it sends.</p>
+</div>
+<div class="section" id="rejoin-on-kick-disconnect">
+<h2>Rejoin on kick/disconnect<a class="headerlink" href="#rejoin-on-kick-disconnect" title="Permalink to this headline">¶</a></h2>
+<p>Errbot won't rejoin a channel by default
+when getting kicked out of one.
+If you want the bot to rejoin channels on kick,
+you can set <cite>IRC_RECONNECT_ON_KICK = 5</cite>
+(to join again after waiting 5 seconds).</p>
+<p>Similarly, to rejoin channels after being disconnected from the server
+you may set <cite>IRC_RECONNECT_ON_DISCONNECT = 5</cite>.</p>
+</div>
+</div>
+
+  <div id="prev_next_links">
+      
+          
+              Previous: <a href="xmpp.html">XMPP backend configuration</a>
+          
+          
+               | 
+              Next: <a href="hipchat.html">HipChat backend configuration</a>
+          
+      
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a class="logo" href="../../index.html" title="Back to home page">
+        <img class="logo" src="../../_static/err_speech.png" width="220" height="135" alt="Logo of Err"/>
+    </a>
+    <div class="ghbuttons">
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=fork&count=true" allowtransparency="true"
+                frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    </div>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">IRC backend configuration</a><ul>
+<li><a class="reference internal" href="#account-setup">Account setup</a></li>
+<li><a class="reference internal" href="#bot-admins">Bot admins</a></li>
+<li><a class="reference internal" href="#channels">Channels</a></li>
+<li><a class="reference internal" href="#flood-protection">Flood protection</a></li>
+<li><a class="reference internal" href="#rejoin-on-kick-disconnect">Rejoin on kick/disconnect</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+    <li><a href="../../index.html">Homepage</a></li>
+    <li><a href="../../genindex.html">Index</a></li>
+    <li><a href="../../py-modindex.html">Module index</a></li>
+    <li><a href="../../modules.html">API reference</a></li>
+        <li>
+        <a href="../setup.html">Setup</a>
+        <ul>
+        <li>Previous: <a href="xmpp.html" title="previous chapter">XMPP backend configuration</a></li>
+        <li>Next: <a href="hipchat.html" title="next chapter">HipChat backend configuration</a></li>
+        </ul>
+        </li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/user_guide/configuration/irc.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.fancybox').fancybox({
+                padding: 0,
+                openEffect: 'elastic'
+            });
+        });
+    </script>
+    <div class="relbar2">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hipchat.html" title="HipChat backend configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="xmpp.html" title="XMPP backend configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" >Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
+          Last updated on Feb 18, 2016.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+    
+  </body>
+</html>

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.plugin_manager &mdash; Err 3.2.1 documentation</title>
+    <title>errbot.plugin_manager &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
     <link rel="up" title="errbot" href="../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -97,6 +97,9 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">tarfile</span> <span class="kn">import</span> <span class="n">TarFile</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+
 <span class="kn">import</span> <span class="nn">pip</span>
 <span class="kn">from</span> <span class="nn">.botplugin</span> <span class="kn">import</span> <span class="n">BotPlugin</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">version2array</span><span class="p">,</span> <span class="n">PY3</span><span class="p">,</span> <span class="n">PY2</span><span class="p">,</span> <span class="n">find_roots_with_extra</span><span class="p">,</span> <span class="n">PLUGINS_SUBDIR</span><span class="p">,</span> <span class="n">which</span><span class="p">,</span> <span class="n">human_name_for_git_url</span>
@@ -500,7 +503,7 @@
         <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;tar.gz&#39;</span><span class="p">):</span>
             <span class="n">tar</span> <span class="o">=</span> <span class="n">TarFile</span><span class="p">(</span><span class="n">fileobj</span><span class="o">=</span><span class="n">urlopen</span><span class="p">(</span><span class="n">repo</span><span class="p">))</span>
             <span class="n">tar</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plugin_dir</span><span class="p">)</span>
-            <span class="n">human_name</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span>
+            <span class="n">human_name</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">human_name</span> <span class="o">=</span> <span class="n">human_name_for_git_url</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
             <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">git_path</span><span class="p">,</span> <span class="s">&#39;clone&#39;</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">human_name</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plugin_dir</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
@@ -596,7 +599,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -604,7 +607,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

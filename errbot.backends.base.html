@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.backends.base module &mdash; Err 3.2.1 documentation</title>
+    <title>errbot.backends.base module &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="_static/err.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="index.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="index.html" />
     <link rel="up" title="errbot.backends package" href="errbot.backends.html" />
     <link rel="next" title="errbot.backends.hipchat module" href="errbot.backends.hipchat.html" />
     <link rel="prev" title="errbot.backends package" href="errbot.backends.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="errbot.backends.html" title="errbot.backends package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="errbot.html" >errbot package</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="errbot.backends.html" accesskey="U">errbot.backends package</a> &raquo;</li> 
       </ul>
@@ -163,7 +163,7 @@ you to implement the missing parts.</p>
 
 <dl class="attribute">
 <dt id="errbot.backends.base.Backend.cmd_history">
-<code class="descname">cmd_history</code><em class="property"> = defaultdict(&lt;function Backend.&lt;lambda&gt; at 0x2ae7795a70d0&gt;, {})</em><a class="headerlink" href="#errbot.backends.base.Backend.cmd_history" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cmd_history</code><em class="property"> = defaultdict(&lt;function Backend.&lt;lambda&gt; at 0x7f380baa9158&gt;, {})</em><a class="headerlink" href="#errbot.backends.base.Backend.cmd_history" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -203,9 +203,11 @@ For example:
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> -- The room to query for.</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of <a class="reference internal" href="#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>.</td>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>room</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The room to query for.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of <a class="reference internal" href="#errbot.backends.base.MUCRoom" title="errbot.backends.base.MUCRoom"><code class="xref py py-class docutils literal"><span class="pre">MUCRoom</span></code></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -260,11 +262,6 @@ to False in order to signal something went wrong. A return value that
 evaluates to True will signal the bot that serving is done and a shut-down
 is requested.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="errbot.backends.base.Backend.shutdown">
-<code class="descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None<a class="reference internal" href="_modules/errbot/backends/base.html#Backend.shutdown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.backends.base.Backend.shutdown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -428,7 +425,7 @@ To get an instance of a real identifier, always use the properties from Message 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reason</strong> -- An optional string explaining the reason for leaving the room.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reason</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- An optional string explaining the reason for leaving the room.</td>
 </tr>
 </tbody>
 </table>
@@ -493,9 +490,9 @@ make sense in the context of other back-ends.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>body</strong> -- The plaintext body of the message.</li>
-<li><strong>type</strong> -- The type of message (generally one of either 'chat' or 'groupchat').</li>
-<li><strong>extras</strong> -- Extra data attached by a backend</li>
+<li><strong>body</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The plaintext body of the message.</li>
+<li><strong>type</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The type of message (generally one of either 'chat' or 'groupchat').</li>
+<li><strong>extras</strong> (<code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code>) -- Extra data attached by a backend</li>
 </ul>
 </td>
 </tr>
@@ -846,7 +843,7 @@ on a user that doesn't exist</p>
         <li class="right" >
           <a href="errbot.backends.html" title="errbot.backends package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="errbot.html" >errbot package</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="errbot.backends.html" >errbot.backends package</a> &raquo;</li> 
       </ul>
@@ -854,7 +851,7 @@ on a user that doesn't exist</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

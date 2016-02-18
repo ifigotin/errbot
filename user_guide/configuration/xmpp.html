@@ -1,0 +1,245 @@
+
+    <!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>XMPP backend configuration &mdash; Err 3.2.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="up" title="Setup" href="../setup.html" />
+    <link rel="next" title="IRC backend configuration" href="irc.html" />
+    <link rel="prev" title="Setup" href="../setup.html" />
+    <script type="text/javascript">
+        // GitHub pages offers no way to redirect to a canonical location, so we
+        // have to make do with hacky javascript redirection :(
+        if (document.location.protocol != "file:" && document.location.host != "errbot.io") {
+            var path = document.location.pathname.replace('/err/', '/');
+            document.location = "http://errbot.io" + path;
+        }
+    </script>
+    <link rel="icon" type="image/png" href="../../_static/err.png"/>
+    <link rel="apple-touch-icon" href="../../_static/err.png"/>
+    <link rel="stylesheet" href="../../_static/fancybox/jquery.fancybox.css" type="text/css"
+          media="screen"/>
+    <script type="text/javascript" src="../../_static/fancybox/jquery.fancybox.pack.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9"/>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32534172-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+        // Gitter button
+        ((window.gitter = {}).chat = {}).options = {
+             room: 'errbotio/errbot'
+        };
+   </script>
+   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+  </head>
+  <body role="document">
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="irc.html" title="IRC backend configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../setup.html" title="Setup"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" accesskey="U">Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="xmpp-backend-configuration">
+<h1>XMPP backend configuration<a class="headerlink" href="#xmpp-backend-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This backend lets you connect to any Jabber/XMPP server.
+To select this backend,
+set <cite>BACKEND = 'XMPP'</cite>.</p>
+<div class="section" id="account-setup">
+<h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">¶</a></h2>
+<p>You must manually register an XMPP account for the bot
+on the server you wish to use.
+Errbot does not support XMPP registration itself.</p>
+<p>Configure the account by setting up <cite>BOT_IDENTITY</cite> as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">BOT_IDENTITY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;err@server.tld&#39;</span><span class="p">,</span>  <span class="c"># The JID of the user you have created for the bot</span>
+    <span class="s">&#39;password&#39;</span><span class="p">:</span> <span class="s">&#39;changeme&#39;</span><span class="p">,</span>        <span class="c"># The corresponding password for this user</span>
+    <span class="c"># &#39;server&#39;: (&#39;host.domain.tld&#39;,5222), # server override</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By default errbot will query SRV records for the correct XMPP server and port,
+which should work with a properly configured server.</p>
+<p>If your chosen XMPP server does not have correct SRV records setup,
+you can also set the <cite>server</cite> key to override this.</p>
+</div>
+<div class="section" id="bot-admins">
+<h2>Bot admins<a class="headerlink" href="#bot-admins" title="Permalink to this headline">¶</a></h2>
+<p>You can set <cite>BOT_ADMINS</cite> to configure which XMPP users are bot administrators.
+For example: <cite>BOT_ADMINS = ('gbin&#64;someplace.com', 'zoni&#64;somewhere.else.com')</cite></p>
+</div>
+<div class="section" id="muc-rooms">
+<h2>MUC rooms<a class="headerlink" href="#muc-rooms" title="Permalink to this headline">¶</a></h2>
+<p>If you want the bot to join a certain chatroom when it starts up
+then set <cite>CHATROOM_PRESENCE</cite> with a list of MUCs to join.
+For example: <cite>CHATROOM_PRESENCE = ('err&#64;conference.server.tld',)</cite></p>
+<p>You can configure the username errbot should use in chatrooms
+by setting <cite>CHATROOM_FN</cite>.</p>
+</div>
+</div>
+
+  <div id="prev_next_links">
+      
+          
+              Previous: <a href="../setup.html">Setup</a>
+          
+          
+               | 
+              Next: <a href="irc.html">IRC backend configuration</a>
+          
+      
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a class="logo" href="../../index.html" title="Back to home page">
+        <img class="logo" src="../../_static/err_speech.png" width="220" height="135" alt="Logo of Err"/>
+    </a>
+    <div class="ghbuttons">
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=errbotio&repo=errbot&type=fork&count=true" allowtransparency="true"
+                frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    </div>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">XMPP backend configuration</a><ul>
+<li><a class="reference internal" href="#account-setup">Account setup</a></li>
+<li><a class="reference internal" href="#bot-admins">Bot admins</a></li>
+<li><a class="reference internal" href="#muc-rooms">MUC rooms</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+    <li><a href="../../index.html">Homepage</a></li>
+    <li><a href="../../genindex.html">Index</a></li>
+    <li><a href="../../py-modindex.html">Module index</a></li>
+    <li><a href="../../modules.html">API reference</a></li>
+        <li>
+        <a href="../setup.html">Setup</a>
+        <ul>
+        <li>Previous: <a href="../setup.html" title="previous chapter">Setup</a></li>
+        <li>Next: <a href="irc.html" title="next chapter">IRC backend configuration</a></li>
+        </ul>
+        </li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/user_guide/configuration/xmpp.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.fancybox').fancybox({
+                padding: 0,
+                openEffect: 'elastic'
+            });
+        });
+    </script>
+    <div class="relbar2">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="irc.html" title="IRC backend configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../setup.html" title="Setup"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../setup.html" >Setup</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
+          Last updated on Feb 18, 2016.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+    
+  </body>
+</html>

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.backends.slack module &mdash; Err 3.2.1 documentation</title>
+    <title>errbot.backends.slack module &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="_static/err.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="index.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="index.html" />
     <link rel="up" title="errbot.backends package" href="errbot.backends.html" />
     <link rel="next" title="errbot.backends.telegram module" href="errbot.backends.telegram.html" />
     <link rel="prev" title="errbot.backends.null module" href="errbot.backends.null.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="errbot.backends.null.html" title="errbot.backends.null module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="errbot.html" >errbot package</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="errbot.backends.html" accesskey="U">errbot.backends package</a> &raquo;</li> 
       </ul>
@@ -109,7 +109,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>error</strong> -- The 'error' key from the API response data</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>error</strong> (<code class="docutils literal"><span class="pre">str</span></code>) -- The 'error' key from the API response data</td>
 </tr>
 </tbody>
 </table>
@@ -137,7 +137,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>method</strong> -- The API method to invoke (see <a class="reference external" href="https://api.slack.com/methods/">https://api.slack.com/methods/</a>).</li>
-<li><strong>raise_errors</strong> -- Whether to raise <a class="reference internal" href="#errbot.backends.slack.SlackAPIResponseError" title="errbot.backends.slack.SlackAPIResponseError"><code class="xref py py-class docutils literal"><span class="pre">SlackAPIResponseError</span></code></a> if the API
+<li><strong>raise_errors</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Whether to raise <a class="reference internal" href="#errbot.backends.slack.SlackAPIResponseError" title="errbot.backends.slack.SlackAPIResponseError"><code class="xref py py-class docutils literal"><span class="pre">SlackAPIResponseError</span></code></a> if the API
 returns an error</li>
 <li><strong>data</strong> -- A dictionary with data to pass along in the API request.</li>
 </ul>
@@ -193,8 +193,8 @@ API responds with <cite>{&quot;ok&quot;: false}</cite></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>exclude_archived</strong> -- Exclude archived channels/groups</li>
-<li><strong>joined_only</strong> -- Filter out channels the bot hasn't joined</li>
+<li><strong>exclude_archived</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Exclude archived channels/groups</li>
+<li><strong>joined_only</strong> (<code class="docutils literal"><span class="pre">bool</span></code>) -- Filter out channels the bot hasn't joined</li>
 </ul>
 </td>
 </tr>
@@ -572,7 +572,7 @@ size_limit (int): chunk the body into sizes capped at this maximum</dd>
         <li class="right" >
           <a href="errbot.backends.null.html" title="errbot.backends.null module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="errbot.html" >errbot package</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="errbot.backends.html" >errbot.backends package</a> &raquo;</li> 
       </ul>
@@ -580,7 +580,7 @@ size_limit (int): chunk the body into sizes capped at this maximum</dd>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

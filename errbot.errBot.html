@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.errBot module &mdash; Err 3.2.1 documentation</title>
+    <title>errbot.errBot module &mdash; Err 3.2.2 documentation</title>
     
     <link rel="stylesheet" href="_static/err.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2.1',
+        VERSION:     '3.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.1 documentation" href="index.html" />
+    <link rel="top" title="Err 3.2.2 documentation" href="index.html" />
     <link rel="up" title="errbot package" href="errbot.html" />
     <link rel="next" title="errbot.main module" href="errbot.main.html" />
     <link rel="prev" title="errbot.err module" href="errbot.err.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="errbot.err.html" title="errbot.err module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="errbot.html" accesskey="U">errbot package</a> &raquo;</li> 
       </ul>
     </div>
@@ -241,6 +241,8 @@ It return True for triggering the callback_messages on the .callback_messages on
 <dt id="errbot.errBot.ErrBot.send">
 <code class="descname">send</code><span class="sig-paren">(</span><em>user</em>, <em>text</em>, <em>in_reply_to=None</em>, <em>message_type='chat'</em>, <em>groupchat_nick_reply=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/errbot/errBot.html#ErrBot.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.errBot.ErrBot.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a simple message to the specified user.
+:type groupchat_nick_reply: <code class="docutils literal"><span class="pre">bool</span></code>
+:type message_type: <code class="docutils literal"><span class="pre">str</span></code>
 :param user:</p>
 <blockquote>
 <div>an identifier from build_identifier or from an incoming message</div></blockquote>
@@ -272,6 +274,7 @@ It return True for triggering the callback_messages on the .callback_messages on
 <dt id="errbot.errBot.ErrBot.send_simple_reply">
 <code class="descname">send_simple_reply</code><span class="sig-paren">(</span><em>mess</em>, <em>text</em>, <em>private=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/errbot/errBot.html#ErrBot.send_simple_reply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.errBot.ErrBot.send_simple_reply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a simple response to a given incoming message
+:type private: <code class="docutils literal"><span class="pre">bool</span></code>
 :param private: if True will force a response in private.
 :param text: the markdown text of the message.
 :param mess: the message you are replying to.</p>
@@ -281,6 +284,8 @@ It return True for triggering the callback_messages on the .callback_messages on
 <dt id="errbot.errBot.ErrBot.send_templated">
 <code class="descname">send_templated</code><span class="sig-paren">(</span><em>user</em>, <em>template_name</em>, <em>template_parameters</em>, <em>in_reply_to=None</em>, <em>message_type='chat'</em>, <em>groupchat_nick_reply=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/errbot/errBot.html#ErrBot.send_templated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errbot.errBot.ErrBot.send_templated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a simple message to the specified user using a template.
+:type groupchat_nick_reply: <code class="docutils literal"><span class="pre">bool</span></code>
+:type message_type: <code class="docutils literal"><span class="pre">str</span></code>
 :param template_parameters: the parameters for the template.
 :param template_name: the template name you want to use.
 :param user:</p>
@@ -313,7 +318,7 @@ It return True for triggering the callback_messages on the .callback_messages on
 
 <dl class="attribute">
 <dt id="errbot.errBot.ErrBot.startup_time">
-<code class="descname">startup_time</code><em class="property"> = datetime.datetime(2015, 11, 16, 15, 34, 48, 636426)</em><a class="headerlink" href="#errbot.errBot.ErrBot.startup_time" title="Permalink to this definition">¶</a></dt>
+<code class="descname">startup_time</code><em class="property"> = datetime.datetime(2016, 2, 18, 22, 51, 33, 715631)</em><a class="headerlink" href="#errbot.errBot.ErrBot.startup_time" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -424,14 +429,14 @@ It return True for triggering the callback_messages on the .callback_messages on
         <li class="right" >
           <a href="errbot.err.html" title="errbot.err module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="errbot.html" >errbot package</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Nov 16, 2015.
+          Last updated on Feb 18, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     
