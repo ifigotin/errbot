@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.templating &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.templating &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="errbot" href="../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,7 +88,7 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.templating</h1><div class="highlight"><pre>
-<span class="kn">import</span> <span class="nn">logging</span>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">TEMPLATE_PATH</span>
@@ -97,45 +97,45 @@
 
 
 <div class="viewcode-block" id="make_templates_path"><a class="viewcode-back" href="../../errbot.templating.html#errbot.templating.make_templates_path">[docs]</a><span class="k">def</span> <span class="nf">make_templates_path</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">root</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="s">&#39;templates&#39;</span>
+    <span class="k">return</span> <span class="n">root</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="s1">&#39;templates&#39;</span></div>
 
-</div>
+
 <span class="n">system_templates_path</span> <span class="o">=</span> <span class="n">make_templates_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
 <span class="n">template_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">system_templates_path</span><span class="p">]</span>
-<span class="n">TEMPLATE_PATH</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">system_templates_path</span><span class="p">)</span>  <span class="c"># for views</span>
+<span class="n">TEMPLATE_PATH</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">system_templates_path</span><span class="p">)</span>  <span class="c1"># for views</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">template_path</span><span class="p">),</span>
                   <span class="n">trim_blocks</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                   <span class="n">keep_trailing_newline</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="tenv"><a class="viewcode-back" href="../../errbot.templating.html#errbot.templating.tenv">[docs]</a><span class="k">def</span> <span class="nf">tenv</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">env</span>
+    <span class="k">return</span> <span class="n">env</span></div>
 
-</div>
+
 <div class="viewcode-block" id="make_templates_from_plugin_path"><a class="viewcode-back" href="../../errbot.templating.html#errbot.templating.make_templates_from_plugin_path">[docs]</a><span class="k">def</span> <span class="nf">make_templates_from_plugin_path</span><span class="p">(</span><span class="n">plugin_path</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">make_templates_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">plugin_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">make_templates_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">plugin_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span></div>
 
-</div>
+
 <div class="viewcode-block" id="add_plugin_templates_path"><a class="viewcode-back" href="../../errbot.templating.html#errbot.templating.add_plugin_templates_path">[docs]</a><span class="k">def</span> <span class="nf">add_plugin_templates_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">env</span>
     <span class="n">tmpl_path</span> <span class="o">=</span> <span class="n">make_templates_from_plugin_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">):</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Templates directory found for this plugin [</span><span class="si">%s</span><span class="s">]&quot;</span> <span class="o">%</span> <span class="n">tmpl_path</span><span class="p">)</span>
-        <span class="n">template_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">)</span>  <span class="c"># for webhooks</span>
-        <span class="n">TEMPLATE_PATH</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmpl_path</span><span class="p">)</span>  <span class="c"># for webviews</span>
-        <span class="c"># Ditch and recreate a new templating environment</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Templates directory found for this plugin [</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">tmpl_path</span><span class="p">)</span>
+        <span class="n">template_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">)</span>  <span class="c1"># for webhooks</span>
+        <span class="n">TEMPLATE_PATH</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmpl_path</span><span class="p">)</span>  <span class="c1"># for webviews</span>
+        <span class="c1"># Ditch and recreate a new templating environment</span>
         <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">template_path</span><span class="p">))</span>
         <span class="k">return</span>
-    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;No templates directory found for this plugin [Looking for </span><span class="si">%s</span><span class="s">]&quot;</span> <span class="o">%</span> <span class="n">tmpl_path</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No templates directory found for this plugin [Looking for </span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">tmpl_path</span><span class="p">)</span></div>
 
-</div>
+
 <div class="viewcode-block" id="remove_plugin_templates_path"><a class="viewcode-back" href="../../errbot.templating.html#errbot.templating.remove_plugin_templates_path">[docs]</a><span class="k">def</span> <span class="nf">remove_plugin_templates_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">env</span>
     <span class="n">tmpl_path</span> <span class="o">=</span> <span class="n">make_templates_from_plugin_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">tmpl_path</span> <span class="ow">in</span> <span class="n">template_path</span><span class="p">:</span>
-        <span class="n">template_path</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">)</span>  <span class="c"># for webhooks</span>
-        <span class="n">TEMPLATE_PATH</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">)</span>  <span class="c"># for webviews</span>
-        <span class="c"># Ditch and recreate a new templating environment</span>
+        <span class="n">template_path</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">)</span>  <span class="c1"># for webhooks</span>
+        <span class="n">TEMPLATE_PATH</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tmpl_path</span><span class="p">)</span>  <span class="c1"># for webviews</span>
+        <span class="c1"># Ditch and recreate a new templating environment</span>
         <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">template_path</span><span class="p">))</span></div>
 </pre></div>
   <div id="prev_next_links">
@@ -211,7 +211,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -219,7 +219,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

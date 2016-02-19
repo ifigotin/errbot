@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>10. Webhooks &mdash; Err 3.2.2 documentation</title>
+    <title>10. Webhooks &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Plugin development" href="index.html" />
     <link rel="next" title="11. Testing your plugins" href="testing.html" />
     <link rel="prev" title="9. Scheduling" href="scheduling.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="scheduling.html" title="9. Scheduling"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Plugin development</a> &raquo;</li> 
       </ul>
     </div>
@@ -120,13 +120,13 @@ such as <a class="reference external" href="http://nginx.org/">nginx</a> or <a c
 is to apply the <code class="xref py py-func docutils literal"><span class="pre">webhook()</span></code> decorator to your
 method. Whatever it returns will be returned in response to the
 request:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="nd">@webhook</span>
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_request</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">incoming_request</span><span class="p">))</span>
-        <span class="k">return</span> <span class="s">&quot;OK&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;OK&quot;</span>
 </pre></div>
 </div>
 <p>This will listen for POST requests on
@@ -138,13 +138,13 @@ response body.</p>
 </div>
 <p>You can also set a custom URI pattern by providing the <cite>uri_rule</cite>
 parameter:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
-    <span class="nd">@webhook</span><span class="p">(</span><span class="s">r&#39;/custom_uri/.*/&#39;</span><span class="p">)</span>
+    <span class="nd">@webhook</span><span class="p">(</span><span class="s1">r&#39;/custom_uri/.*/&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_request</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">incoming_request</span><span class="p">))</span>
-        <span class="k">return</span> <span class="s">&quot;OK&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;OK&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -161,16 +161,16 @@ dictionary of the JSON data.</p>
 handle as well, you just need to specify the <cite>form_param</cite> parameter.</p>
 <p>A good example for this is the GitHub format that posts a form with
 a <em>payload</em> parameter:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
 
 <span class="k">class</span> <span class="nc">Github</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
-    <span class="nd">@webhook</span><span class="p">(</span><span class="s">r&#39;/github/&#39;</span><span class="p">,</span> <span class="n">form_param</span> <span class="o">=</span> <span class="s">&#39;payload&#39;</span><span class="p">)</span>
+    <span class="nd">@webhook</span><span class="p">(</span><span class="s1">r&#39;/github/&#39;</span><span class="p">,</span> <span class="n">form_param</span> <span class="o">=</span> <span class="s1">&#39;payload&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">notification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">CHATROOM_PRESENCE</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
                 <span class="n">room</span><span class="p">,</span>
-                <span class="s">&#39;Commit on </span><span class="si">%s</span><span class="s">!&#39;</span> <span class="o">%</span> <span class="n">payload</span><span class="p">[</span><span class="s">&#39;repository&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span>
-                <span class="n">message_type</span><span class="o">=</span><span class="s">&#39;groupchat&#39;</span>
+                <span class="s1">&#39;Commit on </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;repository&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                <span class="n">message_type</span><span class="o">=</span><span class="s1">&#39;groupchat&#39;</span>
             <span class="p">)</span>
 </pre></div>
 </div>
@@ -184,13 +184,13 @@ request itself. By setting the <cite>raw</cite> parameter of the
 be able to get the
 <a class="reference external" href="http://bottlepy.org/docs/dev/api.html#bottle.BaseRequest">bottle.BaseRequest</a>
 which contains all the details about the actual request:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="nd">@webhook</span><span class="p">(</span><span class="n">raw</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-        <span class="n">user_agent</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_header</span><span class="p">(</span><span class="s">&quot;user-agent&quot;</span><span class="p">,</span> <span class="s">&quot;Unknown&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="s">&quot;Your user-agent is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_agent</span><span class="p">)</span>
+        <span class="n">user_agent</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_header</span><span class="p">(</span><span class="s2">&quot;user-agent&quot;</span><span class="p">,</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;Your user-agent is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_agent</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -202,26 +202,26 @@ different status code can all be done by manipulating the
 object. The bottle docs on <a class="reference external" href="http://bottlepy.org/docs/dev/tutorial.html#the-response-object">the response object</a>
 explain this in more detail. Here's an example of setting a
 custom header:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">response</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="nd">@webhook</span>
     <span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_request</span><span class="p">):</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">set_header</span><span class="p">(</span><span class="s">&quot;X-Powered-By&quot;</span><span class="p">,</span> <span class="s">&quot;Errbot&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="s">&quot;OK&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">set_header</span><span class="p">(</span><span class="s2">&quot;X-Powered-By&quot;</span><span class="p">,</span> <span class="s2">&quot;Errbot&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;OK&quot;</span>
 </pre></div>
 </div>
 <p>Bottle also has various helpers such as the <cite>abort()</cite> method.
 Using this method we could, for example, return a 403 forbidden
 response like so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">webhook</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">abort</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="nd">@webhook</span>
     <span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_request</span><span class="p">):</span>
-        <span class="n">abort</span><span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="s">&quot;Forbidden&quot;</span><span class="p">)</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="s2">&quot;Forbidden&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -231,7 +231,7 @@ response like so:</p>
 an actual HTTP request, using the following format: <cite>!webhook test
 [endpoint] [post_content]</cite></p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>!webhook test github payload=%7B%22pusher%22%3A%7B%22name%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%2C%22repository%22%3A%7B%22name%22%3A%22test%22%2C%22created_at%22%3A%222012-08-12T16%3A09%3A43-07%3A00%22%2C%22has_wiki%22%3Atrue%2C%22size%22%3A128%2C%22private%22%3Afalse%2C%22watchers%22%3A0%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%22%2C%22fork%22%3Afalse%2C%22pushed_at%22%3A%222012-08-12T16%3A26%3A35-07%3A00%22%2C%22has_downloads%22%3Atrue%2C%22open_issues%22%3A0%2C%22has_issues%22%3Atrue%2C%22stargazers%22%3A0%2C%22forks%22%3A0%2C%22description%22%3A%22ignore%20this%2C%20this%20is%20for%20testing%20the%20new%20err%20github%20integration%22%2C%22owner%22%3A%7B%22name%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%7D%2C%22forced%22%3Afalse%2C%22after%22%3A%22b3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22head_commit%22%3A%7B%22added%22%3A%5B%5D%2C%22modified%22%3A%5B%22README.md%22%5D%2C%22timestamp%22%3A%222012-08-12T16%3A24%3A25-07%3A00%22%2C%22removed%22%3A%5B%5D%2C%22author%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%2Fcommit%2Fb3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22id%22%3A%22b3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22distinct%22%3Atrue%2C%22message%22%3A%22voila%22%2C%22committer%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%7D%2C%22deleted%22%3Afalse%2C%22commits%22%3A%5B%7B%22added%22%3A%5B%5D%2C%22modified%22%3A%5B%22README.md%22%5D%2C%22timestamp%22%3A%222012-08-12T16%3A24%3A25-07%3A00%22%2C%22removed%22%3A%5B%5D%2C%22author%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%2Fcommit%2Fb3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22id%22%3A%22b3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22distinct%22%3Atrue%2C%22message%22%3A%22voila%22%2C%22committer%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%7D%5D%2C%22ref%22%3A%22refs%2Fheads%2Fmaster%22%2C%22before%22%3A%2229b1f5e59b7799073b6d792ce76076c200987265%22%2C%22compare%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%2Fcompare%2F29b1f5e59b77...b3cd9e66e52e%22%2C%22created%22%3Afalse%7D
+<div class="highlight-python"><div class="highlight"><pre><span></span>!webhook test github payload=%7B%22pusher%22%3A%7B%22name%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%2C%22repository%22%3A%7B%22name%22%3A%22test%22%2C%22created_at%22%3A%222012-08-12T16%3A09%3A43-07%3A00%22%2C%22has_wiki%22%3Atrue%2C%22size%22%3A128%2C%22private%22%3Afalse%2C%22watchers%22%3A0%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%22%2C%22fork%22%3Afalse%2C%22pushed_at%22%3A%222012-08-12T16%3A26%3A35-07%3A00%22%2C%22has_downloads%22%3Atrue%2C%22open_issues%22%3A0%2C%22has_issues%22%3Atrue%2C%22stargazers%22%3A0%2C%22forks%22%3A0%2C%22description%22%3A%22ignore%20this%2C%20this%20is%20for%20testing%20the%20new%20err%20github%20integration%22%2C%22owner%22%3A%7B%22name%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%7D%2C%22forced%22%3Afalse%2C%22after%22%3A%22b3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22head_commit%22%3A%7B%22added%22%3A%5B%5D%2C%22modified%22%3A%5B%22README.md%22%5D%2C%22timestamp%22%3A%222012-08-12T16%3A24%3A25-07%3A00%22%2C%22removed%22%3A%5B%5D%2C%22author%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%2Fcommit%2Fb3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22id%22%3A%22b3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22distinct%22%3Atrue%2C%22message%22%3A%22voila%22%2C%22committer%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%7D%2C%22deleted%22%3Afalse%2C%22commits%22%3A%5B%7B%22added%22%3A%5B%5D%2C%22modified%22%3A%5B%22README.md%22%5D%2C%22timestamp%22%3A%222012-08-12T16%3A24%3A25-07%3A00%22%2C%22removed%22%3A%5B%5D%2C%22author%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%2Fcommit%2Fb3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22id%22%3A%22b3cd9e66e52e4783c1a0b98fbaaad6258669275f%22%2C%22distinct%22%3Atrue%2C%22message%22%3A%22voila%22%2C%22committer%22%3A%7B%22name%22%3A%22Guillaume%20BINET%22%2C%22username%22%3A%22gbin%22%2C%22email%22%3A%22gbin%40gootz.net%22%7D%7D%5D%2C%22ref%22%3A%22refs%2Fheads%2Fmaster%22%2C%22before%22%3A%2229b1f5e59b7799073b6d792ce76076c200987265%22%2C%22compare%22%3A%22https%3A%2F%2Fgithub.com%2Fgbin%2Ftest%2Fcompare%2F29b1f5e59b77...b3cd9e66e52e%22%2C%22created%22%3Afalse%7D
 </pre></div>
 </div>
 <div class="admonition note">
@@ -342,14 +342,14 @@ command.</p>
         <li class="right" >
           <a href="scheduling.html" title="9. Scheduling"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Plugin development</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

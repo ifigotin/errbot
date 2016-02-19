@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.core_plugins.wsview &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.core_plugins.wsview &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../../index.html" />
     <link rel="up" title="errbot" href="../../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,31 +88,31 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.core_plugins.wsview</h1><div class="highlight"><pre>
-<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">getmembers</span><span class="p">,</span> <span class="n">ismethod</span>
+<span></span><span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">getmembers</span><span class="p">,</span> <span class="n">ismethod</span>
 <span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">loads</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">Bottle</span><span class="p">,</span> <span class="n">request</span>
 
-<span class="c"># noinspection PyUnresolvedReferences</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">jinja2_view</span> <span class="k">as</span> <span class="n">view</span>
-<span class="c"># noinspection PyUnresolvedReferences</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">jinja2_template</span> <span class="k">as</span> <span class="n">template</span>
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="strip_path"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.strip_path">[docs]</a><span class="k">def</span> <span class="nf">strip_path</span><span class="p">():</span>
-    <span class="c"># strip the trailing slashes on incoming requests</span>
-    <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;PATH_INFO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;PATH_INFO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+    <span class="c1"># strip the trailing slashes on incoming requests</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span></div>
 
-</div>
+
 <div class="viewcode-block" id="DynamicBottle"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.DynamicBottle">[docs]</a><span class="k">class</span> <span class="nc">DynamicBottle</span><span class="p">(</span><span class="n">Bottle</span><span class="p">):</span>
 
 <div class="viewcode-block" id="DynamicBottle.__init__"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.DynamicBottle.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catchall</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">autojson</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">catchall</span><span class="p">,</span> <span class="n">autojson</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_hook</span><span class="p">(</span><span class="s">&#39;before_request&#39;</span><span class="p">,</span> <span class="n">strip_path</span><span class="p">)</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_hook</span><span class="p">(</span><span class="s1">&#39;before_request&#39;</span><span class="p">,</span> <span class="n">strip_path</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="DynamicBottle.del_route"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.DynamicBottle.del_route">[docs]</a>    <span class="k">def</span> <span class="nf">del_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route_name</span><span class="p">):</span>
         <span class="n">deleted_route</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">for</span> <span class="n">route_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[:]:</span>
@@ -121,13 +121,13 @@
                 <span class="n">deleted_route</span> <span class="o">=</span> <span class="n">route_</span>
                 <span class="k">break</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">deleted_route</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Cannot find the route </span><span class="si">%s</span><span class="s"> to delete&#39;</span> <span class="o">%</span> <span class="n">route_name</span><span class="p">)</span>
-        <span class="k">del</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">router</span><span class="o">.</span><span class="n">rules</span><span class="p">[</span><span class="n">deleted_route</span><span class="o">.</span><span class="n">rule</span><span class="p">])</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot find the route </span><span class="si">%s</span><span class="s1"> to delete&#39;</span> <span class="o">%</span> <span class="n">route_name</span><span class="p">)</span>
+        <span class="k">del</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">router</span><span class="o">.</span><span class="n">rules</span><span class="p">[</span><span class="n">deleted_route</span><span class="o">.</span><span class="n">rule</span><span class="p">])</span></div></div>
 
-</div></div>
+
 <span class="n">bottle_app</span> <span class="o">=</span> <span class="n">DynamicBottle</span><span class="p">()</span>
 
-<span class="n">route</span> <span class="o">=</span> <span class="n">bottle_app</span><span class="o">.</span><span class="n">route</span>  <span class="c"># make that the default</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">bottle_app</span><span class="o">.</span><span class="n">route</span>  <span class="c1"># make that the default</span>
 
 
 <div class="viewcode-block" id="try_decode_json"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.try_decode_json">[docs]</a><span class="k">def</span> <span class="nf">try_decode_json</span><span class="p">(</span><span class="n">req</span><span class="p">):</span>
@@ -135,62 +135,62 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="bp">None</span></div>
 
-</div>
+
 <div class="viewcode-block" id="reset_app"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.reset_app">[docs]</a><span class="k">def</span> <span class="nf">reset_app</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Zap everything here, useful for unit tests</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">bottle_app</span>
-    <span class="n">bottle_app</span> <span class="o">=</span> <span class="n">DynamicBottle</span><span class="p">()</span>
+    <span class="n">bottle_app</span> <span class="o">=</span> <span class="n">DynamicBottle</span><span class="p">()</span></div>
 
-</div>
+
 <div class="viewcode-block" id="route"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.route">[docs]</a><span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Check for functions to route in obj and route them.&quot;&quot;&quot;</span>
     <span class="n">classname</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
-    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Checking </span><span class="si">%s</span><span class="s"> for webhooks&quot;</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checking </span><span class="si">%s</span><span class="s2"> for webhooks&quot;</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">getmembers</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ismethod</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s">&#39;_err_webhook_uri_rule&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Webhook routing </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;_err_webhook_uri_rule&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Webhook routing </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">verb</span> <span class="ow">in</span> <span class="n">func</span><span class="o">.</span><span class="n">_err_webhook_methods</span><span class="p">:</span>
                 <span class="n">wv</span> <span class="o">=</span> <span class="n">WebView</span><span class="p">(</span><span class="n">func</span><span class="p">,</span>
                              <span class="n">func</span><span class="o">.</span><span class="n">_err_webhook_form_param</span><span class="p">,</span>
                              <span class="n">func</span><span class="o">.</span><span class="n">_err_webhook_raw</span><span class="p">)</span>
                 <span class="n">bottle_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">_err_webhook_uri_rule</span><span class="p">,</span> <span class="n">verb</span><span class="p">,</span>
-                                 <span class="n">callback</span><span class="o">=</span><span class="n">wv</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">verb</span><span class="p">)</span>
+                                 <span class="n">callback</span><span class="o">=</span><span class="n">wv</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">verb</span><span class="p">)</span></div>
 
-</div>
+
 <div class="viewcode-block" id="WebView"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.WebView">[docs]</a><span class="k">class</span> <span class="nc">WebView</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <div class="viewcode-block" id="WebView.__init__"><a class="viewcode-back" href="../../../errbot.core_plugins.wsview.html#errbot.WebView.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">form_param</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">form_param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">raw</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;Incompatible parameters: form_param cannot be set if raw is True&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Incompatible parameters: form_param cannot be set if raw is True&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">form_param</span> <span class="o">=</span> <span class="n">form_param</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">method_filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">ismethod</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="n">obj</span><span class="o">.</span><span class="n">__name__</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method_filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">ismethod</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="n">obj</span><span class="o">.</span><span class="n">__name__</span></div>
+
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">:</span>  <span class="c"># override and gives the request directly</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">:</span>  <span class="c1"># override and gives the request directly</span>
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_param</span><span class="p">:</span>
             <span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_param</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">content</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;Received a request on a webhook with a form_param defined, &quot;</span>
-                                <span class="s">&quot;but that key ({}) is missing from the request.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_param</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Received a request on a webhook with a form_param defined, &quot;</span>
+                                <span class="s2">&quot;but that key ({}) is missing from the request.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_param</span><span class="p">))</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">content</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;The form parameter is not JSON, return it as a string&#39;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;The form parameter is not JSON, return it as a string&#39;</span><span class="p">)</span>
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">try_decode_json</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;forms&#39;</span><span class="p">):</span>
-                    <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">forms</span><span class="p">)</span>  <span class="c"># form encoded</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;forms&#39;</span><span class="p">):</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">forms</span><span class="p">)</span>  <span class="c1"># form encoded</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">response</span> <span class="k">if</span> <span class="n">response</span> <span class="k">else</span> <span class="s">&#39;&#39;</span>  <span class="c"># assume None as an OK response (simplifies the client side)</span></div>
+        <span class="k">return</span> <span class="n">response</span> <span class="k">if</span> <span class="n">response</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># assume None as an OK response (simplifies the client side)</span></div>
 </pre></div>
   <div id="prev_next_links">
       
@@ -265,7 +265,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -273,7 +273,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

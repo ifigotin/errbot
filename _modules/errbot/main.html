@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.main &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.main &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="errbot" href="../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,7 +88,7 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.main</h1><div class="highlight"><pre>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">makedirs</span>
+<span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">makedirs</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">errbot.backend_manager</span> <span class="kn">import</span> <span class="n">BackendManager</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -97,8 +97,8 @@
 
 
 <div class="viewcode-block" id="setup_bot"><a class="viewcode-back" href="../../errbot.main.html#errbot.main.setup_bot">[docs]</a><span class="k">def</span> <span class="nf">setup_bot</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">restore</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="c"># from here the environment is supposed to be set (daemon / non daemon,</span>
-    <span class="c"># config.py in the python path )</span>
+    <span class="c1"># from here the environment is supposed to be set (daemon / non daemon,</span>
+    <span class="c1"># config.py in the python path )</span>
 
     <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">PLUGINS_SUBDIR</span>
     <span class="kn">from</span> <span class="nn">.errBot</span> <span class="kn">import</span> <span class="n">bot_config_defaults</span>
@@ -107,7 +107,7 @@
 
     <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">BOT_LOG_FILE</span><span class="p">:</span>
         <span class="n">hdlr</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BOT_LOG_FILE</span><span class="p">)</span>
-        <span class="n">hdlr</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(levelname)-8s</span><span class="s"> </span><span class="si">%(name)-25s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&quot;</span><span class="p">))</span>
+        <span class="n">hdlr</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> </span><span class="si">%(levelname)-8s</span><span class="s2"> </span><span class="si">%(name)-25s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">hdlr</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">BOT_LOG_SENTRY</span><span class="p">:</span>
@@ -115,10 +115,10 @@
             <span class="kn">from</span> <span class="nn">raven.handlers.logging</span> <span class="kn">import</span> <span class="n">SentryHandler</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span>
-                <span class="s">&quot;You have BOT_LOG_SENTRY enabled, but I couldn&#39;t import modules &quot;</span>
-                <span class="s">&quot;needed for Sentry integration. Did you install raven? &quot;</span>
-                <span class="s">&quot;(See http://raven.readthedocs.org/en/latest/install/index.html &quot;</span>
-                <span class="s">&quot;for installation instructions)&quot;</span>
+                <span class="s2">&quot;You have BOT_LOG_SENTRY enabled, but I couldn&#39;t import modules &quot;</span>
+                <span class="s2">&quot;needed for Sentry integration. Did you install raven? &quot;</span>
+                <span class="s2">&quot;(See http://raven.readthedocs.org/en/latest/install/index.html &quot;</span>
+                <span class="s2">&quot;for installation instructions)&quot;</span>
             <span class="p">)</span>
             <span class="nb">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
@@ -127,53 +127,53 @@
 
     <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BOT_LOG_LEVEL</span><span class="p">)</span>
 
-    <span class="c"># make the plugins subdir to store the plugin shelves</span>
+    <span class="c1"># make the plugins subdir to store the plugin shelves</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BOT_DATA_DIR</span><span class="p">,</span> <span class="n">PLUGINS_SUBDIR</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
         <span class="n">makedirs</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">0</span><span class="n">o755</span><span class="p">)</span>
 
-    <span class="c"># instanciate the bot</span>
+    <span class="c1"># instanciate the bot</span>
     <span class="n">bpm</span> <span class="o">=</span> <span class="n">BackendManager</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 
     <span class="n">plug</span> <span class="o">=</span> <span class="n">bpm</span><span class="o">.</span><span class="n">get_candidate</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
 
-    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Found Backend plugin: &#39;</span><span class="si">%s</span><span class="s">&#39;</span><span class="se">\n\t\t\t\t\t\t</span><span class="s">Description: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">plug</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">plug</span><span class="o">.</span><span class="n">description</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found Backend plugin: &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n\t\t\t\t\t\t</span><span class="s2">Description: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">plug</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">plug</span><span class="o">.</span><span class="n">description</span><span class="p">))</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">bot</span> <span class="o">=</span> <span class="n">bpm</span><span class="o">.</span><span class="n">get_backend_by_name</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;Unable to configure the backend, please check if your config.py is correct.&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Unable to configure the backend, please check if your config.py is correct.&quot;</span><span class="p">)</span>
         <span class="nb">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="c"># restore the bot from the restore script</span>
+    <span class="c1"># restore the bot from the restore script</span>
     <span class="k">if</span> <span class="n">restore</span><span class="p">:</span>
-        <span class="c"># Prepare the context for the restore script</span>
-        <span class="k">if</span> <span class="s">&#39;repos&#39;</span> <span class="ow">in</span> <span class="n">bot</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="s">&#39;You cannot restore onto a non empty bot.&#39;</span><span class="p">)</span>
+        <span class="c1"># Prepare the context for the restore script</span>
+        <span class="k">if</span> <span class="s1">&#39;repos&#39;</span> <span class="ow">in</span> <span class="n">bot</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="s1">&#39;You cannot restore onto a non empty bot.&#39;</span><span class="p">)</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;**** RESTORING the bot from </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">restore</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;**** RESTORING the bot from </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">restore</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">restore</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">exec</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
         <span class="n">bot</span><span class="o">.</span><span class="n">close_storage</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Restore complete. You can restart the bot normally&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Restore complete. You can restart the bot normally&#39;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">errors</span> <span class="o">=</span> <span class="n">bot</span><span class="o">.</span><span class="n">update_dynamic_plugins</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Some plugins failed to load:</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">bot</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Some plugins failed to load:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">bot</span></div>
 
-</div>
+
 <div class="viewcode-block" id="enumerate_backends"><a class="viewcode-back" href="../../errbot.main.html#errbot.main.enumerate_backends">[docs]</a><span class="k">def</span> <span class="nf">enumerate_backends</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns all the backends found for the given config.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">bpm</span> <span class="o">=</span> <span class="n">BackendManager</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">plug</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">plug</span><span class="p">)</span> <span class="ow">in</span> <span class="n">bpm</span><span class="o">.</span><span class="n">getPluginCandidates</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">plug</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">plug</span><span class="p">)</span> <span class="ow">in</span> <span class="n">bpm</span><span class="o">.</span><span class="n">getPluginCandidates</span><span class="p">()]</span></div>
 
-</div>
+
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../errbot.main.html#errbot.main.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">bot_class</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">restore</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="n">bot</span> <span class="o">=</span> <span class="n">setup_bot</span><span class="p">(</span><span class="n">bot_class</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">restore</span><span class="p">)</span>
-    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;serve from </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">bot</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;serve from </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">bot</span><span class="p">)</span>
     <span class="n">bot</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span></div>
 </pre></div>
   <div id="prev_next_links">
@@ -249,7 +249,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -257,7 +257,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

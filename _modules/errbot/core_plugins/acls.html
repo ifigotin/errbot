@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.core_plugins.acls &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.core_plugins.acls &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../../index.html" />
     <link rel="up" title="errbot" href="../../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,16 +88,16 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.core_plugins.acls</h1><div class="highlight"><pre>
-<span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">cmdfilter</span>
+<span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">cmdfilter</span>
 <span class="n">BLOCK_COMMAND</span> <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="get_acl_usr"><a class="viewcode-back" href="../../../errbot.core_plugins.acls.html#errbot.core_plugins.acls.get_acl_usr">[docs]</a><span class="k">def</span> <span class="nf">get_acl_usr</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&#39;aclattr&#39;</span><span class="p">):</span>  <span class="c"># if the identity requires a special field to be used for acl</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s1">&#39;aclattr&#39;</span><span class="p">):</span>  <span class="c1"># if the identity requires a special field to be used for acl</span>
         <span class="k">return</span> <span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="o">.</span><span class="n">aclattr</span>
-    <span class="k">return</span> <span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="o">.</span><span class="n">person</span>  <span class="c"># default</span>
+    <span class="k">return</span> <span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="o">.</span><span class="n">person</span>  <span class="c1"># default</span></div>
 
-</div>
+
 <div class="viewcode-block" id="ACLS"><a class="viewcode-back" href="../../../errbot.core_plugins.acls.html#errbot.core_plugins.acls.ACLS">[docs]</a><span class="k">class</span> <span class="nc">ACLS</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This checks commands for potential ACL violations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -105,8 +105,8 @@
 <div class="viewcode-block" id="ACLS.access_denied"><a class="viewcode-back" href="../../../errbot.core_plugins.acls.html#errbot.core_plugins.acls.ACLS.access_denied">[docs]</a>    <span class="k">def</span> <span class="nf">access_denied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">dry_run</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">HIDE_RESTRICTED_ACCESS</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">send_simple_reply</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">BLOCK_COMMAND</span>
-</div>
+        <span class="k">return</span> <span class="n">BLOCK_COMMAND</span></div>
+
     <span class="nd">@cmdfilter</span>
 <div class="viewcode-block" id="ACLS.acls"><a class="viewcode-back" href="../../../errbot.core_plugins.acls.html#errbot.core_plugins.acls.ACLS.acls">[docs]</a>    <span class="k">def</span> <span class="nf">acls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -119,49 +119,49 @@
 
 <span class="sd">        Return None, None, None if the command is blocked or deferred</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Check </span><span class="si">%s</span><span class="s"> for ACLs.&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Check </span><span class="si">%s</span><span class="s2"> for ACLs.&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>
 
         <span class="n">usr</span> <span class="o">=</span> <span class="n">get_acl_usr</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="n">typ</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">type</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Matching ACLs against username </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">usr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Matching ACLs against username </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">usr</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">cmd</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS_DEFAULT</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="s">&#39;allowusers&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
-           <span class="n">usr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s">&#39;allowusers&#39;</span><span class="p">]):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&quot;You&#39;re not allowed to access this command from this user&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;allowusers&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
+           <span class="n">usr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s1">&#39;allowusers&#39;</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;You&#39;re not allowed to access this command from this user&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="s">&#39;denyusers&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
-           <span class="n">usr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s">&#39;denyusers&#39;</span><span class="p">]):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&quot;You&#39;re not allowed to access this command from this user&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;denyusers&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
+           <span class="n">usr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s1">&#39;denyusers&#39;</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;You&#39;re not allowed to access this command from this user&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s">&#39;groupchat&#39;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&#39;room&#39;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;msg.frm is not a MUCIdentifier as it misses the &quot;room&quot; property. Class of frm : </span><span class="si">%s</span><span class="s">&#39;</span>
+        <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;groupchat&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s1">&#39;room&#39;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;msg.frm is not a MUCIdentifier as it misses the &quot;room&quot; property. Class of frm : </span><span class="si">%s</span><span class="s1">&#39;</span>
                                 <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="o">.</span><span class="n">__class__</span><span class="p">)</span>
             <span class="n">room</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="o">.</span><span class="n">room</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s">&#39;allowmuc&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s">&#39;allowmuc&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&quot;You&#39;re not allowed to access this command from a chatroom&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;allowmuc&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s1">&#39;allowmuc&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;You&#39;re not allowed to access this command from a chatroom&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="s">&#39;allowrooms&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
-               <span class="n">room</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s">&#39;allowrooms&#39;</span><span class="p">]):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&quot;You&#39;re not allowed to access this command from this room&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;allowrooms&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
+               <span class="n">room</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s1">&#39;allowrooms&#39;</span><span class="p">]):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;You&#39;re not allowed to access this command from this room&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="s">&#39;denyrooms&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
-               <span class="n">room</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s">&#39;denyrooms&#39;</span><span class="p">]):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&quot;You&#39;re not allowed to access this command from this room&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;denyrooms&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
+               <span class="n">room</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s1">&#39;denyrooms&#39;</span><span class="p">]):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;You&#39;re not allowed to access this command from this room&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="p">(</span><span class="s">&#39;allowprivate&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
-              <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s">&#39;allowprivate&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="s1">&#39;allowprivate&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span> <span class="ow">and</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">ACCESS_CONTROLS</span><span class="p">[</span><span class="n">cmd</span><span class="p">][</span><span class="s1">&#39;allowprivate&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span>
                     <span class="n">msg</span><span class="p">,</span>
-                    <span class="s">&quot;You&#39;re not allowed to access this command via private message to me&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+                    <span class="s2">&quot;You&#39;re not allowed to access this command via private message to me&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">msg</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span>
-</div>
+        <span class="k">return</span> <span class="n">msg</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span></div>
+
     <span class="nd">@cmdfilter</span>
 <div class="viewcode-block" id="ACLS.admin"><a class="viewcode-back" href="../../../errbot.core_plugins.acls.html#errbot.core_plugins.acls.ACLS.admin">[docs]</a>    <span class="k">def</span> <span class="nf">admin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -173,17 +173,17 @@
 <span class="sd">        :param dry_run: pass True to not act on the check (messages / deferred auth etc.)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Check if </span><span class="si">%s</span><span class="s"> is admin only command.&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Check if </span><span class="si">%s</span><span class="s2"> is admin only command.&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>
         <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">all_commands</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">_err_command_admin_only</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#39;groupchat&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;groupchat&#39;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span>
                         <span class="n">msg</span><span class="p">,</span>
-                        <span class="s">&quot;You cannot administer the bot from a chatroom, message the bot directly&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+                        <span class="s2">&quot;You cannot administer the bot from a chatroom, message the bot directly&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">get_acl_usr</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">BOT_ADMINS</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&quot;This command requires bot-admin privileges&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_denied</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;This command requires bot-admin privileges&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">msg</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span></div></div>
 </pre></div>
@@ -260,7 +260,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -268,7 +268,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>IRC backend configuration &mdash; Err 3.2.2 documentation</title>
+    <title>IRC backend configuration &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Setup" href="../setup.html" />
     <link rel="next" title="HipChat backend configuration" href="hipchat.html" />
     <link rel="prev" title="XMPP backend configuration" href="xmpp.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="xmpp.html" title="XMPP backend configuration"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../setup.html" accesskey="U">Setup</a> &raquo;</li> 
       </ul>
     </div>
@@ -102,21 +102,21 @@ set <cite>BACKEND = 'IRC'</cite>.</p>
 <div class="section" id="account-setup">
 <h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">¶</a></h2>
 <p>Configure the account by setting up <cite>BOT_IDENTITY</cite> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">BOT_IDENTITY</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;nickname&#39;</span> <span class="p">:</span> <span class="s">&#39;err-chatbot&#39;</span><span class="p">,</span>
-    <span class="c"># &#39;username&#39; : &#39;err-chatbot&#39;,    # optional, defaults to nickname if omitted</span>
-    <span class="c"># &#39;password&#39; : None,             # optional</span>
-    <span class="s">&#39;server&#39;</span> <span class="p">:</span> <span class="s">&#39;irc.freenode.net&#39;</span><span class="p">,</span>
-    <span class="c"># &#39;port&#39;: 6667,                  # optional</span>
-    <span class="c"># &#39;ssl&#39;: False,                  # optional</span>
-    <span class="c"># &#39;ipv6&#39;: False,                 # optional</span>
-    <span class="c"># &#39;nickserv_password&#39;: None,     # optional</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">BOT_IDENTITY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nickname&#39;</span> <span class="p">:</span> <span class="s1">&#39;err-chatbot&#39;</span><span class="p">,</span>
+    <span class="c1"># &#39;username&#39; : &#39;err-chatbot&#39;,    # optional, defaults to nickname if omitted</span>
+    <span class="c1"># &#39;password&#39; : None,             # optional</span>
+    <span class="s1">&#39;server&#39;</span> <span class="p">:</span> <span class="s1">&#39;irc.freenode.net&#39;</span><span class="p">,</span>
+    <span class="c1"># &#39;port&#39;: 6667,                  # optional</span>
+    <span class="c1"># &#39;ssl&#39;: False,                  # optional</span>
+    <span class="c1"># &#39;ipv6&#39;: False,                 # optional</span>
+    <span class="c1"># &#39;nickserv_password&#39;: None,     # optional</span>
 
-    <span class="c">## Optional: Specify an IP address or hostname (vhost), and a</span>
-    <span class="c">## port, to use when making the connection. Leave port at 0</span>
-    <span class="c">## if you have no source port preference.</span>
-    <span class="c">##    example: &#39;bind_address&#39;: (&#39;my-errbot.io&#39;, 0)</span>
-    <span class="c"># &#39;bind_address&#39;: (&#39;localhost&#39;, 0),</span>
+    <span class="c1">## Optional: Specify an IP address or hostname (vhost), and a</span>
+    <span class="c1">## port, to use when making the connection. Leave port at 0</span>
+    <span class="c1">## if you have no source port preference.</span>
+    <span class="c1">##    example: &#39;bind_address&#39;: (&#39;my-errbot.io&#39;, 0)</span>
+    <span class="c1"># &#39;bind_address&#39;: (&#39;localhost&#39;, 0),</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -264,14 +264,14 @@ you may set <cite>IRC_RECONNECT_ON_DISCONNECT = 5</cite>.</p>
         <li class="right" >
           <a href="xmpp.html" title="XMPP backend configuration"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../setup.html" >Setup</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

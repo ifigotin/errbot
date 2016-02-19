@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.backends.base &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.backends.base &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../../index.html" />
     <link rel="up" title="errbot" href="../../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,7 +88,7 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.backends.base</h1><div class="highlight"><pre>
-<span class="kn">import</span> <span class="nn">io</span>
+<span></span><span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -99,7 +99,7 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="c">#  3.3 compatibility</span>
+    <span class="c1">#  3.3 compatibility</span>
     <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
 
     <span class="k">class</span> <span class="nc">ABC</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
@@ -111,8 +111,8 @@
 
 <span class="kn">from</span> <span class="nn">errbot.utils</span> <span class="kn">import</span> <span class="n">compat_str</span>
 
-<span class="c"># Can&#39;t use __name__ because of Yapsy</span>
-<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&#39;errbot.backends.base&#39;</span><span class="p">)</span>
+<span class="c1"># Can&#39;t use __name__ because of Yapsy</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;errbot.backends.base&#39;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Identifier"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Identifier">[docs]</a><span class="k">class</span> <span class="nc">Identifier</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -156,19 +156,19 @@
 <span class="sd">        Some backends have the full name of a user.</span>
 <span class="sd">        :return: the fullname of this user if available.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
+        <span class="k">pass</span></div>
 
-</div>
+
 <div class="viewcode-block" id="MUCIdentifier"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.MUCIdentifier">[docs]</a><span class="k">class</span> <span class="nc">MUCIdentifier</span><span class="p">(</span><span class="n">Identifier</span><span class="p">):</span>
     <span class="nd">@abstractproperty</span>
-    <span class="k">def</span> <span class="nf">room</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>  <span class="c"># this is MUCRoom defined below</span>
+    <span class="k">def</span> <span class="nf">room</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>  <span class="c1"># this is MUCRoom defined below</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Some backends have the full name of a user.</span>
 <span class="sd">        :return: the fullname of this user if available.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
+        <span class="k">pass</span></div>
 
-</div>
+
 <div class="viewcode-block" id="MUCRoom"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.MUCRoom">[docs]</a><span class="k">class</span> <span class="nc">MUCRoom</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class represents a Multi-User Chatroom.</span>
@@ -181,8 +181,8 @@
 <span class="sd">        If the room does not exist yet, this will automatically call</span>
 <span class="sd">        :meth:`create` on it first.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
-</div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MUCRoom.leave"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.MUCRoom.leave">[docs]</a>    <span class="k">def</span> <span class="nf">leave</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Leave the room.</span>
@@ -190,24 +190,24 @@
 <span class="sd">        :param reason:</span>
 <span class="sd">            An optional string explaining the reason for leaving the room.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
-</div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MUCRoom.create"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.MUCRoom.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create the room.</span>
 
 <span class="sd">        Calling this on an already existing room is a no-op.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
-</div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MUCRoom.destroy"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.MUCRoom.destroy">[docs]</a>    <span class="k">def</span> <span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Destroy the room.</span>
 
 <span class="sd">        Calling this on a non-existing room is a no-op.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
-</div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span></div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -216,7 +216,7 @@
 <span class="sd">        :getter:</span>
 <span class="sd">            Returns `True` if the room exists, `False` otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">joined</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -226,7 +226,7 @@
 <span class="sd">        :getter:</span>
 <span class="sd">            Returns `True` if the room has been joined, `False` otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">topic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -245,7 +245,7 @@
 <span class="sd">            :class:`~MUCNotJoinedError` if the room has not yet been joined.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
 
     <span class="nd">@topic.setter</span>
     <span class="k">def</span> <span class="nf">topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
@@ -255,7 +255,7 @@
 <span class="sd">        :param topic:</span>
 <span class="sd">            The topic to set.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">occupants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MUCIdentifier</span><span class="p">]:</span>
@@ -267,7 +267,7 @@
 <span class="sd">        :raises:</span>
 <span class="sd">            :class:`~MUCNotJoinedError` if the room has not yet been joined.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MUCRoom.invite"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.MUCRoom.invite">[docs]</a>    <span class="k">def</span> <span class="nf">invite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -276,28 +276,28 @@
 <span class="sd">        :*args:</span>
 <span class="sd">            One or more identifiers to invite into the room.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span></div></div>
 
-</div></div>
+
 <div class="viewcode-block" id="RoomError"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.RoomError">[docs]</a><span class="k">class</span> <span class="nc">RoomError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;General exception class for MUC-related errors&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;General exception class for MUC-related errors&quot;&quot;&quot;</span></div>
 
-</div>
+
 <div class="viewcode-block" id="RoomNotJoinedError"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.RoomNotJoinedError">[docs]</a><span class="k">class</span> <span class="nc">RoomNotJoinedError</span><span class="p">(</span><span class="n">RoomError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Exception raised when performing MUC operations</span>
-<span class="sd">    that require the bot to have joined the room&quot;&quot;&quot;</span>
+<span class="sd">    that require the bot to have joined the room&quot;&quot;&quot;</span></div>
 
-</div>
+
 <div class="viewcode-block" id="RoomDoesNotExistError"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.RoomDoesNotExistError">[docs]</a><span class="k">class</span> <span class="nc">RoomDoesNotExistError</span><span class="p">(</span><span class="n">RoomError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Exception that is raised when performing an operation</span>
-<span class="sd">    on a room that doesn&#39;t exist&quot;&quot;&quot;</span>
+<span class="sd">    on a room that doesn&#39;t exist&quot;&quot;&quot;</span></div>
 
-</div>
+
 <div class="viewcode-block" id="UserDoesNotExistError"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.UserDoesNotExistError">[docs]</a><span class="k">class</span> <span class="nc">UserDoesNotExistError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Exception that is raised when performing an operation</span>
-<span class="sd">    on a user that doesn&#39;t exist&quot;&quot;&quot;</span>
+<span class="sd">    on a user that doesn&#39;t exist&quot;&quot;&quot;</span></div>
 
-</div>
+
 <div class="viewcode-block" id="Message"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Message">[docs]</a><span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A chat message.</span>
@@ -308,8 +308,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Message.__init__"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Message.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
-                 <span class="n">type_</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s">&#39;chat&#39;</span><span class="p">,</span>
+                 <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">type_</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;chat&#39;</span><span class="p">,</span>
                  <span class="n">frm</span><span class="p">:</span> <span class="n">Identifier</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">to</span><span class="p">:</span> <span class="n">Identifier</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">delayed</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
@@ -327,11 +327,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_from</span> <span class="o">=</span> <span class="n">frm</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_to</span> <span class="o">=</span> <span class="n">to</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_delayed</span> <span class="o">=</span> <span class="n">delayed</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_extras</span> <span class="o">=</span> <span class="n">extras</span> <span class="ow">or</span> <span class="nb">dict</span><span class="p">()</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extras</span> <span class="o">=</span> <span class="n">extras</span> <span class="ow">or</span> <span class="nb">dict</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="Message.clone"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Message.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_body</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_from</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delayed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">extras</span><span class="p">)</span>
-</div>
+        <span class="k">return</span> <span class="n">Message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_body</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_from</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delayed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">extras</span><span class="p">)</span></div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Identifier</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -350,8 +350,8 @@
 <span class="sd">        :param to:</span>
 <span class="sd">            An identifier from for example build_identifier().</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="s">&#39;person&#39;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;`to` not an Identifier as it misses &#39;&#39;the &quot;person&quot; property. `to` : </span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">)&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`to` not an Identifier as it misses &#39;&#39;the &quot;person&quot; property. `to` : </span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">)&#39;</span>
                             <span class="o">%</span> <span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="n">to</span><span class="o">.</span><span class="n">__class__</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_to</span> <span class="o">=</span> <span class="n">to</span>
 
@@ -396,8 +396,8 @@
 <span class="sd">        :param from_:</span>
 <span class="sd">            An identifier from build_identifier.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">from_</span><span class="p">,</span> <span class="s">&#39;person&#39;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;`from_` not an Identifier as it misses the &quot;person&quot; property. from_ : </span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">)&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">from_</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`from_` not an Identifier as it misses the &quot;person&quot; property. from_ : </span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">)&#39;</span>
                             <span class="o">%</span> <span class="p">(</span><span class="n">from_</span><span class="p">,</span> <span class="n">from_</span><span class="o">.</span><span class="n">__class__</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_from</span> <span class="o">=</span> <span class="n">from_</span>
 
@@ -428,15 +428,15 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extras</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span></div>
 
-    <span class="c"># deprecated stuff ...</span>
+    <span class="c1"># deprecated stuff ...</span>
 
-</div>
-<span class="n">ONLINE</span> <span class="o">=</span> <span class="s">&#39;online&#39;</span>
-<span class="n">OFFLINE</span> <span class="o">=</span> <span class="s">&#39;offline&#39;</span>
-<span class="n">AWAY</span> <span class="o">=</span> <span class="s">&#39;away&#39;</span>
-<span class="n">DND</span> <span class="o">=</span> <span class="s">&#39;dnd&#39;</span>
+
+<span class="n">ONLINE</span> <span class="o">=</span> <span class="s1">&#39;online&#39;</span>
+<span class="n">OFFLINE</span> <span class="o">=</span> <span class="s1">&#39;offline&#39;</span>
+<span class="n">AWAY</span> <span class="o">=</span> <span class="s1">&#39;away&#39;</span>
+<span class="n">DND</span> <span class="o">=</span> <span class="s1">&#39;dnd&#39;</span>
 
 
 <div class="viewcode-block" id="Presence"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Presence">[docs]</a><span class="k">class</span> <span class="nc">Presence</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -454,17 +454,17 @@
                  <span class="n">chatroom</span><span class="p">:</span> <span class="n">Identifier</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">nick</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">identifier</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Presence: nick and identifiers are both None&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Presence: nick and identifiers are both None&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nick</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">chatroom</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Presence: nick is None when chatroom is not&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Presence: nick is None when chatroom is not&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">status</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">message</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Presence: at least a new status or a new status message mustbe present&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Presence: at least a new status or a new status message mustbe present&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nick</span> <span class="o">=</span> <span class="n">nick</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span> <span class="o">=</span> <span class="n">identifier</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_chatroom</span> <span class="o">=</span> <span class="n">chatroom</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">status</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">message</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">message</span></div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">chatroom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Identifier</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; Returns the identifier pointing the room in which the event occurred.</span>
@@ -506,30 +506,30 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nick</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">+=</span> <span class="s">&#39;Nick:</span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nick</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="s1">&#39;Nick:</span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nick</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">+=</span> <span class="s">&#39;Idd:</span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="s1">&#39;Idd:</span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">+=</span> <span class="s">&#39;Status:</span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="s1">&#39;Status:</span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chatroom</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">+=</span> <span class="s">&#39;Room:</span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chatroom</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="s1">&#39;Room:</span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chatroom</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">+=</span> <span class="s">&#39;Msg:</span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="s1">&#39;Msg:</span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message</span>
         <span class="k">return</span> <span class="n">response</span>
 
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__str__</span><span class="p">())</span>
-</div>
-<span class="n">STREAM_WAITING_TO_START</span> <span class="o">=</span> <span class="s">&#39;pending&#39;</span>
-<span class="n">STREAM_TRANSFER_IN_PROGRESS</span> <span class="o">=</span> <span class="s">&#39;in progress&#39;</span>
-<span class="n">STREAM_SUCCESSFULLY_TRANSFERED</span> <span class="o">=</span> <span class="s">&#39;success&#39;</span>
-<span class="n">STREAM_PAUSED</span> <span class="o">=</span> <span class="s">&#39;paused&#39;</span>
-<span class="n">STREAM_ERROR</span> <span class="o">=</span> <span class="s">&#39;error&#39;</span>
-<span class="n">STREAM_REJECTED</span> <span class="o">=</span> <span class="s">&#39;rejected&#39;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__str__</span><span class="p">())</span></div>
 
-<span class="n">DEFAULT_REASON</span> <span class="o">=</span> <span class="s">&#39;unknown&#39;</span>
+<span class="n">STREAM_WAITING_TO_START</span> <span class="o">=</span> <span class="s1">&#39;pending&#39;</span>
+<span class="n">STREAM_TRANSFER_IN_PROGRESS</span> <span class="o">=</span> <span class="s1">&#39;in progress&#39;</span>
+<span class="n">STREAM_SUCCESSFULLY_TRANSFERED</span> <span class="o">=</span> <span class="s1">&#39;success&#39;</span>
+<span class="n">STREAM_PAUSED</span> <span class="o">=</span> <span class="s1">&#39;paused&#39;</span>
+<span class="n">STREAM_ERROR</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span>
+<span class="n">STREAM_REJECTED</span> <span class="o">=</span> <span class="s1">&#39;rejected&#39;</span>
+
+<span class="n">DEFAULT_REASON</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
 
 
 <div class="viewcode-block" id="Stream"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream">[docs]</a><span class="k">class</span> <span class="nc">Stream</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BufferedReader</span><span class="p">):</span>
@@ -553,8 +553,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_stream_type</span> <span class="o">=</span> <span class="n">stream_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_WAITING_TO_START</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reason</span> <span class="o">=</span> <span class="n">DEFAULT_REASON</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_transfered</span> <span class="o">=</span> <span class="mi">0</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transfered</span> <span class="o">=</span> <span class="mi">0</span></div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Identifier</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -604,97 +604,97 @@
 <span class="sd">            Signal that the stream has been accepted.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">!=</span> <span class="n">STREAM_WAITING_TO_START</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid state, the stream is not pending.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_TRANSFER_IN_PROGRESS</span>
-</div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid state, the stream is not pending.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_TRANSFER_IN_PROGRESS</span></div>
+
 <div class="viewcode-block" id="Stream.reject"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream.reject">[docs]</a>    <span class="k">def</span> <span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Signal that the stream has been rejected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">!=</span> <span class="n">STREAM_WAITING_TO_START</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid state, the stream is not pending.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_REJECTED</span>
-</div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid state, the stream is not pending.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_REJECTED</span></div>
+
 <div class="viewcode-block" id="Stream.error"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="n">DEFAULT_REASON</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            An internal plugin error prevented the transfer.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_ERROR</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reason</span> <span class="o">=</span> <span class="n">reason</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reason</span> <span class="o">=</span> <span class="n">reason</span></div>
+
 <div class="viewcode-block" id="Stream.success"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream.success">[docs]</a>    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            The streaming finished normally.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">!=</span> <span class="n">STREAM_TRANSFER_IN_PROGRESS</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid state, the stream is not in progress.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_SUCCESSFULLY_TRANSFERED</span>
-</div>
-<div class="viewcode-block" id="Stream.clone"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_fsource</span><span class="p">:</span> <span class="n">BinaryIO</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>  <span class="c"># this is obviously a Stream but the compiler doesn&#39;t like it.</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid state, the stream is not in progress.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">STREAM_SUCCESSFULLY_TRANSFERED</span></div>
+
+<div class="viewcode-block" id="Stream.clone"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_fsource</span><span class="p">:</span> <span class="n">BinaryIO</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>  <span class="c1"># this is obviously a Stream but the compiler doesn&#39;t like it.</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Creates a clone and with an alternative stream</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Stream</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span><span class="p">,</span> <span class="n">new_fsource</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream_type</span><span class="p">)</span>
-</div>
+        <span class="k">return</span> <span class="n">Stream</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span><span class="p">,</span> <span class="n">new_fsource</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream_type</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Stream.ack_data"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Stream.ack_data">[docs]</a>    <span class="k">def</span> <span class="nf">ack_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; Acknowledge data has been transfered. &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_transfered</span> <span class="o">=</span> <span class="n">length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transfered</span> <span class="o">=</span> <span class="n">length</span></div></div>
 
-</div></div>
+
 <div class="viewcode-block" id="Backend"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend">[docs]</a><span class="k">class</span> <span class="nc">Backend</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implements the basic Bot logic (logic independent from the backend) and leaves</span>
 <span class="sd">    you to implement the missing parts.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">cmd_history</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>  <span class="c"># this will be a per user history</span>
+    <span class="n">cmd_history</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># this will be a per user history</span>
 
-    <span class="n">MSG_ERROR_OCCURRED</span> <span class="o">=</span> <span class="s">&#39;Sorry for your inconvenience. &#39;</span> \
-                         <span class="s">&#39;An unexpected error occurred.&#39;</span>
+    <span class="n">MSG_ERROR_OCCURRED</span> <span class="o">=</span> <span class="s1">&#39;Sorry for your inconvenience. &#39;</span> \
+                         <span class="s1">&#39;An unexpected error occurred.&#39;</span>
 
 <div class="viewcode-block" id="Backend.__init__"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Those arguments will be directly those put in BOT_IDENTITY</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Backend init.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_count</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c"># Increments with each failed (re)connection</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_delay</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c"># Amount of seconds the bot will sleep on the</span>
-        <span class="c">#                                     # next reconnection attempt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_max_delay</span> <span class="o">=</span> <span class="mi">600</span>    <span class="c"># Maximum delay between reconnection attempts</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_multiplier</span> <span class="o">=</span> <span class="mf">1.75</span>  <span class="c"># Delay multiplier</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_jitter</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c"># Random jitter added to delay (min, max)</span>
-</div>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Backend init.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_count</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1"># Increments with each failed (re)connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_delay</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c1"># Amount of seconds the bot will sleep on the</span>
+        <span class="c1">#                                     # next reconnection attempt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_max_delay</span> <span class="o">=</span> <span class="mi">600</span>    <span class="c1"># Maximum delay between reconnection attempts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_multiplier</span> <span class="o">=</span> <span class="mf">1.75</span>  <span class="c1"># Delay multiplier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_jitter</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># Random jitter added to delay (min, max)</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.send_message"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.send_message">[docs]</a>    <span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">:</span> <span class="n">Message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Should be overridden by backends with a super().send_message() call.&quot;&quot;&quot;</span>
-</div>
+        <span class="sd">&quot;&quot;&quot;Should be overridden by backends with a super().send_message() call.&quot;&quot;&quot;</span></div>
+
     <span class="nd">@abstractmethod</span>
-<div class="viewcode-block" id="Backend.change_presence"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.change_presence">[docs]</a>    <span class="k">def</span> <span class="nf">change_presence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="n">ONLINE</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Signal a presence change for the bot. Should be overridden by backends with a super().send_message() call.&quot;&quot;&quot;</span>
-</div>
+<div class="viewcode-block" id="Backend.change_presence"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.change_presence">[docs]</a>    <span class="k">def</span> <span class="nf">change_presence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="n">ONLINE</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Signal a presence change for the bot. Should be overridden by backends with a super().send_message() call.&quot;&quot;&quot;</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.build_reply"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.build_reply">[docs]</a>    <span class="k">def</span> <span class="nf">build_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">private</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Should be implemented by the backend &quot;&quot;&quot;</span>
-</div>
+        <span class="sd">&quot;&quot;&quot; Should be implemented by the backend &quot;&quot;&quot;</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.callback_presence"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.callback_presence">[docs]</a>    <span class="k">def</span> <span class="nf">callback_presence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">presence</span><span class="p">:</span> <span class="n">Presence</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; Implemented by errBot. &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.callback_room_joined"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.callback_room_joined">[docs]</a>    <span class="k">def</span> <span class="nf">callback_room_joined</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">MUCRoom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; See :class:`~errbot.errBot.ErrBot` &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.callback_room_left"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.callback_room_left">[docs]</a>    <span class="k">def</span> <span class="nf">callback_room_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">MUCRoom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; See :class:`~errbot.errBot.ErrBot` &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.callback_room_topic"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.callback_room_topic">[docs]</a>    <span class="k">def</span> <span class="nf">callback_room_topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">MUCRoom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; See :class:`~errbot.errBot.ErrBot` &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="Backend.serve_forever"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.serve_forever">[docs]</a>    <span class="k">def</span> <span class="nf">serve_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Connect the back-end to the server and serve forever.</span>
@@ -708,27 +708,27 @@
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">serve_once</span><span class="p">():</span>
-                    <span class="k">break</span>  <span class="c"># Truth-y exit from serve_once means shutdown was requested</span>
+                    <span class="k">break</span>  <span class="c1"># Truth-y exit from serve_once means shutdown was requested</span>
             <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Interrupt received, shutting down..&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Interrupt received, shutting down..&quot;</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;Exception occurred in serve_once:&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Exception occurred in serve_once:&quot;</span><span class="p">)</span>
 
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s">&quot;Reconnecting in {delay} seconds ({count} attempted reconnections so far)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s2">&quot;Reconnecting in {delay} seconds ({count} attempted reconnections so far)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">delay</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_delay</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_count</span><span class="p">)</span>
             <span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_delay_reconnect</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_count</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Interrupt received, shutting down..&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Interrupt received, shutting down..&quot;</span><span class="p">)</span>
                 <span class="k">break</span>
 
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Trigger shutdown&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
-</div>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Trigger shutdown&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span></div>
+
     <span class="k">def</span> <span class="nf">_delay_reconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delay next reconnection attempt until a suitable back-off time has passed&quot;&quot;&quot;</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_delay</span><span class="p">)</span>
@@ -744,25 +744,25 @@
 <span class="sd">        successfully connecting.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_count</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_delay</span> <span class="o">=</span> <span class="mi">1</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reconnection_delay</span> <span class="o">=</span> <span class="mi">1</span></div>
+
 <div class="viewcode-block" id="Backend.build_message"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.build_message">[docs]</a>    <span class="k">def</span> <span class="nf">build_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Message</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; You might want to override this one depending on your backend &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Message</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Message</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
 
-    <span class="c"># ##### HERE ARE THE SPECIFICS TO IMPLEMENT PER BACKEND</span>
-</div>
+    <span class="c1"># ##### HERE ARE THE SPECIFICS TO IMPLEMENT PER BACKEND</span>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.prefix_groupchat_reply"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.prefix_groupchat_reply">[docs]</a>    <span class="k">def</span> <span class="nf">prefix_groupchat_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="n">Identifier</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Patches message with the conventional prefix to ping the specific contact</span>
 <span class="sd">        For example:</span>
 <span class="sd">        @gbin, you forgot the milk !</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-</div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.build_identifier"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.build_identifier">[docs]</a>    <span class="k">def</span> <span class="nf">build_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text_representation</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Identifier</span><span class="p">,</span> <span class="n">MUCIdentifier</span><span class="p">]:</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="Backend.serve_once"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.serve_once">[docs]</a>    <span class="k">def</span> <span class="nf">serve_once</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Connect the back-end to the server and serve a connection once</span>
@@ -776,11 +776,11 @@
 <span class="sd">        evaluates to True will signal the bot that serving is done and a shut-down</span>
 <span class="sd">        is requested.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span>
-</div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;It should be implemented specifically for your backend&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Backend.connect"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Connects the bot to server or returns current connection &quot;&quot;&quot;</span>
-</div>
+        <span class="sd">&quot;&quot;&quot;Connects the bot to server or returns current connection &quot;&quot;&quot;</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.query_room"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.query_room">[docs]</a>    <span class="k">def</span> <span class="nf">query_room</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MUCRoom</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -790,16 +790,16 @@
 <span class="sd">            The room to query for.</span>
 <span class="sd">        :returns:</span>
 <span class="sd">            An instance of :class:`~MUCRoom`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-</div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.connect_callback"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.connect_callback">[docs]</a>    <span class="k">def</span> <span class="nf">connect_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
     <span class="nd">@abstractmethod</span>
 <div class="viewcode-block" id="Backend.disconnect_callback"><a class="viewcode-back" href="../../../errbot.backends.base.html#errbot.backends.base.Backend.disconnect_callback">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
     <span class="nd">@abstractproperty</span>
     <span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">pass</span>
@@ -886,7 +886,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -894,7 +894,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

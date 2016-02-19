@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. Configuration &mdash; Err 3.2.2 documentation</title>
+    <title>8. Configuration &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Plugin development" href="index.html" />
     <link rel="next" title="9. Scheduling" href="scheduling.html" />
     <link rel="prev" title="7. Persistence" href="persistence.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="persistence.html" title="7. Persistence"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Plugin development</a> &raquo;</li> 
       </ul>
     </div>
@@ -107,12 +107,12 @@ template (ie. a config example) by overriding the
 <a class="reference internal" href="../../errbot.botplugin.html#errbot.botplugin.BotPlugin.get_configuration_template" title="errbot.botplugin.BotPlugin.get_configuration_template"><code class="xref py py-meth docutils literal"><span class="pre">get_configuration_template()</span></code></a>
 method. For example, a plugin might request a dictionary with 2
 entries:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get_configuration_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;ID_TOKEN&#39;</span><span class="p">:</span> <span class="s">&#39;00112233445566778899aabbccddeeff&#39;</span><span class="p">,</span>
-                <span class="s">&#39;USERNAME&#39;</span><span class="p">:</span><span class="s">&#39;changeme&#39;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ID_TOKEN&#39;</span><span class="p">:</span> <span class="s1">&#39;00112233445566778899aabbccddeeff&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;USERNAME&#39;</span><span class="p">:</span><span class="s1">&#39;changeme&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>With this in place, an admin will be able to request the default
@@ -124,10 +124,10 @@ to enable that configuration.</p>
 well as the config that is actually set, by issuing <cite>!config
 PluginExample</cite> again.</p>
 <p>Within your code, the config that is set will be in <cite>self.config</cite>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@botcmd</span>
 <span class="k">def</span> <span class="nf">mycommand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-    <span class="c"># oh I need my TOKEN !</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;ID_TOKEN&#39;</span><span class="p">]</span>
+    <span class="c1"># oh I need my TOKEN !</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;ID_TOKEN&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -142,10 +142,10 @@ PluginExample</cite> again.</p>
 they wish to override from the template instead of having to copy-paste and
 modify the complete entry.</p>
 <p>This can be achieved by overriding <a class="reference internal" href="../../errbot.botplugin.html#errbot.botplugin.BotPlugin.configure" title="errbot.botplugin.BotPlugin.configure"><code class="xref py py-meth docutils literal"><span class="pre">configure()</span></code></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 
-<span class="n">CONFIG_TEMPLATE</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;ID_TOKEN&#39;</span><span class="p">:</span> <span class="s">&#39;00112233445566778899aabbccddeeff&#39;</span><span class="p">,</span>
-                   <span class="s">&#39;USERNAME&#39;</span><span class="p">:</span><span class="s">&#39;changeme&#39;</span><span class="p">}</span>
+<span class="n">CONFIG_TEMPLATE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ID_TOKEN&#39;</span><span class="p">:</span> <span class="s1">&#39;00112233445566778899aabbccddeeff&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;USERNAME&#39;</span><span class="p">:</span><span class="s1">&#39;changeme&#39;</span><span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">configuration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">configuration</span> <span class="o">!=</span> <span class="p">{}:</span>
@@ -165,7 +165,7 @@ work.</p>
 pass an empty dictionary to <cite>!config</cite>.</p>
 <p>You'll now also need to override <a class="reference internal" href="../../errbot.botplugin.html#errbot.botplugin.BotPlugin.get_configuration_template" title="errbot.botplugin.BotPlugin.get_configuration_template"><code class="xref py py-meth docutils literal"><span class="pre">get_configuration_template()</span></code></a>
 and return the <cite>CONFIG_TEMPLATE</cite> in that function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_configuration_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_configuration_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">CONFIG_TEMPLATE</span>
 </pre></div>
 </div>
@@ -187,7 +187,7 @@ parameter. Be mindful of this situation.</p>
 <p>Using the partial configuration trick as shown above requires you to
 override <a class="reference internal" href="../../errbot.botplugin.html#errbot.botplugin.BotPlugin.check_configuration" title="errbot.botplugin.BotPlugin.check_configuration"><code class="xref py py-meth docutils literal"><span class="pre">check_configuration()</span></code></a>, so
 at a minimum you'll need this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">check_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -294,14 +294,14 @@ that is up to you.</p>
         <li class="right" >
           <a href="persistence.html" title="7. Persistence"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Plugin development</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. Hello, world! &mdash; Err 3.2.2 documentation</title>
+    <title>3. Hello, world! &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Plugin development" href="index.html" />
     <link rel="next" title="4. Advanced bot commands" href="botcommands.html" />
     <link rel="prev" title="2. Development environment" href="development_environment.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="development_environment.html" title="2. Development environment"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Plugin development</a> &raquo;</li> 
       </ul>
     </div>
@@ -98,7 +98,7 @@
 <h1>3. Hello, world!<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h1>
 <p>On the <a class="reference internal" href="../../index.html"><em>homepage</em></a>, we showed you the following <em>&quot;Hello
 world!&quot;</em> plugin as an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
 
 <span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Example &#39;Hello, world!&#39; plugin for Errbot&quot;&quot;&quot;</span>
@@ -106,7 +106,7 @@ world!&quot;</em> plugin as an example:</p>
     <span class="nd">@botcmd</span>
     <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Say hello to the world&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s">&quot;Hello, world!&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Hello, world!&quot;</span>
 </pre></div>
 </div>
 <p>In this chapter, you will learn exactly how this plugin works.</p>
@@ -120,7 +120,7 @@ plugin, so copy and paste the above example code into it.</p>
 <h2>3.1. Anatomy of a BotPlugin<a class="headerlink" href="#anatomy-of-a-botplugin" title="Permalink to this headline">¶</a></h2>
 <p>Although this plugin is only 9 lines long, there is already a lot of
 interesting stuff going on here. Lets go through it step by step.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
 </pre></div>
 </div>
 <p>This should be pretty self-explanatory. Here we import the
@@ -128,7 +128,7 @@ interesting stuff going on here. Lets go through it step by step.</p>
 <code class="xref py py-func docutils literal"><span class="pre">botcmd()</span></code> decorator. These let us build a
 class that can be loaded as a plugin and allow us to mark methods of
 that class as bot commands.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Example &#39;Hello, world!&#39; plugin for Errbot&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -143,10 +143,10 @@ command.</p>
 <p class="first admonition-title">Warning</p>
 <p class="last">A plugin should only ever contain a single class inheriting from  <a class="reference internal" href="../../errbot.botplugin.html#errbot.botplugin.BotPlugin" title="errbot.botplugin.BotPlugin"><code class="xref py py-class docutils literal"><span class="pre">BotPlugin</span></code></a></p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@botcmd</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Say hello to the world&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="s">&quot;Hello, world!&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, world!&quot;</span>
 </pre></div>
 </div>
 <p>This method, <cite>hello</cite>, is turned into a bot command which can be
@@ -197,7 +197,7 @@ alongside your actual plugin file. This is a file that ends with the
 extension <cite>.plug</cite> and it is used by Errbot to identify and load plugins.</p>
 <p>Lets go ahead and create ours. Place the following in a file called
 <cite>helloworld.plug</cite>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span class="k">[Core]</span>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[Core]</span>
 <span class="na">Name</span> <span class="o">=</span> <span class="s">HelloWorld</span>
 <span class="na">Module</span> <span class="o">=</span> <span class="s">helloworld</span>
 
@@ -249,7 +249,7 @@ the <cite>Description</cite> item here with a short description of your plugin.<
 your plugin automatically.</p>
 <p>You can verify this by giving the <cite>!status</cite> command, which should
 respond with something like the following:</p>
-<div class="highlight-python"><div class="highlight"><pre>Yes I am alive...
+<div class="highlight-python"><div class="highlight"><pre><span></span>Yes I am alive...
 With these plugins (A=Activated, D=Deactivated, B=Blacklisted, C=Needs to be configured):
 [A] ChatRoom
 [A] HelloWorld
@@ -370,14 +370,14 @@ Errbot has to offer.</p>
         <li class="right" >
           <a href="development_environment.html" title="2. Development environment"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Plugin development</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

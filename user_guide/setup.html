@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setup &mdash; Err 3.2.2 documentation</title>
+    <title>Setup &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../index.html" />
     <link rel="next" title="XMPP backend configuration" href="configuration/xmpp.html" />
     <link rel="prev" title="Multiple server back-ends" href="../features.html" />
     <script type="text/javascript">
@@ -82,7 +82,7 @@
         <li class="right" >
           <a href="../features.html" title="Multiple server back-ends"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
       
@@ -104,17 +104,17 @@ it is recommended (but not required) to have a least one MUC for Errbot to use a
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Errbot may be installed directly from PyPi using <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a> by issuing:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install errbot
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install errbot
 </pre></div>
 </div>
 <p>Or if you wish to try out the latest, bleeding edge version:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install https://github.com/errbotio/errbot/archive/master.zip
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install https://github.com/errbotio/errbot/archive/master.zip
 </pre></div>
 </div>
 <p>However, installing into a <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> is <strong>strongly</strong> recommended.
 If you have virtualenv installed,
 you could instead do:</p>
-<div class="highlight-python"><div class="highlight"><pre># Create the virtualenv
+<div class="highlight-python"><div class="highlight"><pre><span></span># Create the virtualenv
 virtualenv --python /usr/bin/python3 /path/to/my/virtualenv
 # Use pip from the virtualenv instead of the global pip
 # to install errbot
@@ -139,27 +139,27 @@ additional requirements need to be installed.</p>
 to make use of the backend suitable for the chat network you are using.</p>
 <ul>
 <li><p class="first">For XMPP servers:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install sleekxmpp pyasn1 pyasn1-modules
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install sleekxmpp pyasn1 pyasn1-modules
 </pre></div>
 </div>
 </li>
 <li><p class="first">For IRC servers:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install irc
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install irc
 </pre></div>
 </div>
 </li>
 <li><p class="first">For HipChat:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install sleekxmpp pyasn1 pyasn1-modules hypchat
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install sleekxmpp pyasn1 pyasn1-modules hypchat
 </pre></div>
 </div>
 </li>
 <li><p class="first">For Slack:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install slackclient
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install slackclient
 </pre></div>
 </div>
 </li>
 <li><p class="first">For Telegram messenger:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install python-telegram-bot
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install python-telegram-bot
 </pre></div>
 </div>
 </li>
@@ -224,12 +224,12 @@ from the following list:</p>
 <h2>Starting the daemon<a class="headerlink" href="#starting-the-daemon" title="Permalink to this headline">¶</a></h2>
 <p>The first time you start Errbot, it is recommended to run it in foreground mode. This can
 be done with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">errbot</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">errbot</span>
 </pre></div>
 </div>
 <p>If you installed errbot into a virtualenv (as recommended),
 call it by prefixing the virtualenv <cite>bin/</cite> directory:</p>
-<div class="highlight-python"><div class="highlight"><pre>/path/to/my/virtualenv/bin/errbot
+<div class="highlight-python"><div class="highlight"><pre><span></span>/path/to/my/virtualenv/bin/errbot
 </pre></div>
 </div>
 <p>Please pass -h or --help to errbot to get a list of supported parameters.
@@ -239,12 +239,32 @@ pointing to the directory holding your <cite>config.py</cite>
 when starting Errbot.</p>
 <p>If all that worked out,
 you can now use the -d (or --daemon) parameter to run it in a detached mode:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">errbot</span> <span class="o">--</span><span class="n">daemon</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">errbot</span> <span class="o">--</span><span class="n">daemon</span>
 </pre></div>
 </div>
 <p>If you are going to run your bot all the time then using some process control system
 such as <a class="reference external" href="http://supervisord.org/">supervisor</a> is highly recommended. Installing and configuring such a system
 is outside the scope of this document however.</p>
+</div>
+<div class="section" id="upgrading">
+<h2>Upgrading<a class="headerlink" href="#upgrading" title="Permalink to this headline">¶</a></h2>
+<p>Errbot comes bundled with a plugin which automatically performs a periodic update check.
+Whenever there is a new release on PyPI,
+this plugin will notify the users set in <cite>BOT_ADMINS</cite> about the new version.</p>
+<p>Assuming you originally installed errbot using pip (see <a class="reference internal" href="#installation">installation</a>),
+you can upgrade errbot in much the same way.
+If you used a virtualenv:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>/path/to/my/virtualenv/bin/pip install --upgrade errbot
+</pre></div>
+</div>
+<p>Or if you used pip without virtualenv:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install --upgrade errbot
+</pre></div>
+</div>
+<p>It's recommended that you review the changelog before performing an upgrade
+in case backwards-incompatible changes have been introduced in the new version.
+The changelog for the release you will be installing can always be found
+on <a class="reference external" href="https://pypi.python.org/pypi/errbot">PyPI</a>.</p>
 </div>
 <div class="section" id="hacking-on-errbot-s-code-directly">
 <h2>Hacking on Errbot's code directly<a class="headerlink" href="#hacking-on-errbot-s-code-directly" title="Permalink to this headline">¶</a></h2>
@@ -252,7 +272,7 @@ is outside the scope of this document however.</p>
 3to2 at install time. This means that while it is possible to run Errbot under Python 3.3+
 directly from a source checkout, it is not possible to do so with Python 2.7.
 If you wish to develop or test with Errbot's code under 2.7, you must run:</p>
-<div class="highlight-python"><div class="highlight"><pre>python setup.py install
+<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py install
 </pre></div>
 </div>
 <p>Alternatively, you can also look into the <cite>--editable</cite> parameter of pip install.</p>
@@ -295,6 +315,7 @@ If you wish to develop or test with Errbot's code under 2.7, you must run:</p>
 </li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 <li><a class="reference internal" href="#starting-the-daemon">Starting the daemon</a></li>
+<li><a class="reference internal" href="#upgrading">Upgrading</a></li>
 <li><a class="reference internal" href="#hacking-on-errbot-s-code-directly">Hacking on Errbot's code directly</a></li>
 </ul>
 </li>
@@ -357,13 +378,13 @@ If you wish to develop or test with Errbot's code under 2.7, you must run:</p>
         <li class="right" >
           <a href="../features.html" title="Multiple server back-ends"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Err 3.2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

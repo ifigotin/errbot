@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot package &mdash; Err 3.2.2 documentation</title>
+    <title>errbot package &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="_static/err.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="index.html" />
     <link rel="next" title="errbot.backends package" href="errbot.backends.html" />
     <link rel="prev" title="Contributing" href="contributing.html" />
     <script type="text/javascript">
@@ -82,7 +82,7 @@
         <li class="right" >
           <a href="contributing.html" title="Contributing"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
       
@@ -580,7 +580,7 @@ The passed type in payload will provide the BaseRequest interface as defined her
 classes to turn them into webhooks which can be reached on Err's built-in webserver.
 The bundled <em>Webserver</em> plugin needs to be configured before these URL's become reachable.</p>
 <p>Methods with this decorator are expected to have a signature like the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@webhook</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@webhook</span>
 <span class="k">def</span> <span class="nf">a_webhook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
@@ -621,7 +621,7 @@ by default.</li>
 <p>This decorator should be applied to methods of <a class="reference internal" href="errbot.botplugin.html#errbot.botplugin.BotPlugin" title="errbot.botplugin.BotPlugin"><code class="xref py py-class docutils literal"><span class="pre">BotPlugin</span></code></a>
 classes to turn them into commands that can be given to the bot. These methods are
 expected to have a signature like the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@botcmd</span>
 <span class="k">def</span> <span class="nf">some_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
@@ -668,7 +668,7 @@ by default.</li>
 <p>This decorator should be applied to methods of <a class="reference internal" href="errbot.botplugin.html#errbot.botplugin.BotPlugin" title="errbot.botplugin.BotPlugin"><code class="xref py py-class docutils literal"><span class="pre">BotPlugin</span></code></a>
 classes to turn them into commands that can be given to the bot. These methods are
 expected to have a signature like the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@re_botcmd</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">r&#39;^some command$&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@re_botcmd</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">r&#39;^some command$&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">some_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">match</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
@@ -715,8 +715,8 @@ whichever name you prefer) to receive the result of <cite>ArgumentParser.parse_a
 classes to turn them into commands that can be given to the bot. The methods will be called
 with the original msg and the argparse parsed arguments. These methods are
 expected to have a signature like the following (assuming <cite>unpack_args=True</cite>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;--repeat-count&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;repeat&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;--repeat-count&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;repeat&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">repeat_the_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="n">repeat</span>
 </pre></div>
@@ -726,8 +726,8 @@ like sender, receiver, the plain-text and html body (if applicable), etc. <cite>
 be a string or list (depending on your value of <cite>split_args_with</cite>) of parameters that
 were given to the command by the user.</p>
 <p>If you wish to use <cite>unpack_args=False</cite>, define the function like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;--repeat-count&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;repeat&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unpack_args</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;--repeat-count&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;repeat&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unpack_args</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">repeat_the_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">arg</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">repeat</span>
 </pre></div>
@@ -835,13 +835,13 @@ statement.</p>
         <li class="right" >
           <a href="contributing.html" title="Contributing"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Err 3.2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

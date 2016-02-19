@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5. Messaging &mdash; Err 3.2.2 documentation</title>
+    <title>5. Messaging &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Plugin development" href="index.html" />
     <link rel="next" title="6. Presence" href="presence.html" />
     <link rel="prev" title="4. Advanced bot commands" href="botcommands.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="botcommands.html" title="4. Advanced bot commands"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Plugin development</a> &raquo;</li> 
       </ul>
     </div>
@@ -105,15 +105,15 @@ use <cite>yield</cite> statements for every line of output you wish to send to
 the user.</p>
 <p>For example, in the following example, the output will be &quot;Going to
 sleep&quot;, followed by a 10 second wait, followed by &quot;Waking up&quot;.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="nd">@botcmd</span>
     <span class="k">def</span> <span class="nf">longcompute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="s">&quot;Going to sleep&quot;</span>
+        <span class="k">yield</span> <span class="s2">&quot;Going to sleep&quot;</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="s">&quot;Waking up&quot;</span>
+        <span class="k">yield</span> <span class="s2">&quot;Waking up&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -122,18 +122,18 @@ sleep&quot;, followed by a 10 second wait, followed by &quot;Waking up&quot;.</p
 <p>Sometimes, you may wish to send a message to a specific user or a
 groupchat, for example from pollers or on webhook events. You can do
 this with <a class="reference internal" href="../../errbot.botplugin.html#errbot.botplugin.BotPlugin.send" title="errbot.botplugin.BotPlugin.send"><code class="xref py py-func docutils literal"><span class="pre">send()</span></code></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># To send to a user</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># To send to a user</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-    <span class="s">&quot;user@host.tld/resource&quot;</span><span class="p">,</span>
-    <span class="s">&quot;Boo! Bet you weren&#39;t expecting me, were you?&quot;</span><span class="p">,</span>
-    <span class="n">message_type</span><span class="o">=</span><span class="s">&quot;chat&quot;</span>
+    <span class="s2">&quot;user@host.tld/resource&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Boo! Bet you weren&#39;t expecting me, were you?&quot;</span><span class="p">,</span>
+    <span class="n">message_type</span><span class="o">=</span><span class="s2">&quot;chat&quot;</span>
 <span class="p">)</span>
 
-<span class="c"># Or to send to a MUC</span>
+<span class="c1"># Or to send to a MUC</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-    <span class="s">&quot;room@conference.host.tld&quot;</span><span class="p">,</span>
-    <span class="s">&quot;Boo! Bet you weren&#39;t expecting me, were you?&quot;</span><span class="p">,</span>
-    <span class="n">message_type</span><span class="o">=</span><span class="s">&quot;groupchat&quot;</span>
+    <span class="s2">&quot;room@conference.host.tld&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Boo! Bet you weren&#39;t expecting me, were you?&quot;</span><span class="p">,</span>
+    <span class="n">message_type</span><span class="o">=</span><span class="s2">&quot;groupchat&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -147,7 +147,7 @@ directory that also holds your plugin's <em>.plug</em> file.</p>
 <p>Inside this directory, you can place Markdown templates (with a
 <em>.md</em> extension) in place of the content you wish to show. For
 example this <em>hello.md</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre>Hello, {{name}}!
+<div class="highlight-python"><div class="highlight"><pre><span></span>Hello, {{name}}!
 </pre></div>
 </div>
 <div class="admonition note">
@@ -161,26 +161,26 @@ parameter to <code class="xref py py-func docutils literal"><span class="pre">bo
 <p>Finally, instead of returning a string, return a dictionary where
 the keys refer to the variables you're substituting inside the
 template (<cite>{{name}}</cite> in the above template example):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
 
 <span class="k">class</span> <span class="nc">Hello</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
-    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Say hello to someone&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">args</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">args</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>It's also possible to use templates when using <cite>self.send()</cite>, but in
 this case you will have to do the template rendering step yourself,
 like so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
 <span class="kn">from</span> <span class="nn">errbot.templating</span> <span class="kn">import</span> <span class="n">tenv</span>
 
 <span class="k">class</span> <span class="nc">Hello</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
-    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Say hello to someone&quot;&quot;&quot;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">tenv</span><span class="p">()</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s">&#39;hello.md&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">tenv</span><span class="p">()</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;hello.md&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message_type</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -190,14 +190,14 @@ like so:</p>
 <p>It's possible to add a callback that will be called on every message
 sent either directly to the bot, or to a chatroom that the bot is
 in:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">callback_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">mess</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;cookie&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mess</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;cookie&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
                 <span class="n">mess</span><span class="o">.</span><span class="n">from</span><span class="p">,</span>
-                <span class="s">&quot;What what somebody said cookie!?&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;What what somebody said cookie!?&quot;</span><span class="p">,</span>
                 <span class="n">message_type</span><span class="o">=</span><span class="n">mess</span><span class="o">.</span><span class="n">type</span>
             <span class="p">)</span>
 </pre></div>
@@ -304,14 +304,14 @@ in:</p>
         <li class="right" >
           <a href="botcommands.html" title="4. Advanced bot commands"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Plugin development</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

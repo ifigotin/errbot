@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. Advanced bot commands &mdash; Err 3.2.2 documentation</title>
+    <title>4. Advanced bot commands &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Plugin development" href="index.html" />
     <link rel="next" title="5. Messaging" href="messaging.html" />
     <link rel="prev" title="3. Hello, world!" href="basics.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="basics.html" title="3. Hello, world!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Plugin development</a> &raquo;</li> 
       </ul>
     </div>
@@ -101,10 +101,10 @@
 <p>With the <cite>split_args_with</cite> argument to <code class="xref py py-func docutils literal"><span class="pre">botcmd()</span></code>,
 you can specify a delimiter of the arguments and it will give you an
 array of strings instead of a string:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@botcmd</span><span class="p">(</span><span class="n">split_args_with</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@botcmd</span><span class="p">(</span><span class="n">split_args_with</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-    <span class="c"># if you send it !action one two three</span>
-    <span class="c"># args will be [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;]</span>
+    <span class="c1"># if you send it !action one two three</span>
+    <span class="c1"># args will be [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -121,14 +121,14 @@ fit.</p>
 <p>If you put an _ in the name of the function, Errbot will create what
 looks like a subcommand for you. This is useful to group commands
 that belong to each other together.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@botcmd</span>
 <span class="k">def</span> <span class="nf">basket_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-    <span class="c"># Will respond to !basket add</span>
+    <span class="c1"># Will respond to !basket add</span>
     <span class="k">pass</span>
 
 <span class="nd">@botcmd</span>
 <span class="k">def</span> <span class="nf">basket_remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-    <span class="c"># Will respond to !basket remove</span>
+    <span class="c1"># Will respond to !basket remove</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -141,14 +141,14 @@ that belong to each other together.</p>
 <h2>4.3. Argparse argument splitting<a class="headerlink" href="#argparse-argument-splitting" title="Permalink to this headline">¶</a></h2>
 <p>With the <code class="xref py py-func docutils literal"><span class="pre">arg_botcmd()</span></code> decorator you can specify
 a command's arguments in <a class="reference external" href="https://docs.python.org/3/library/argparse.html">argparse format</a>. The decorator can be used multiple times, and each use adds a new argument to the command. The decorator can be passed any valid <a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument">add_arguments()</a> parameters.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;first_name&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;--last-name&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;last_name&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&#39;str&#39;</span><span class="p">)</span>
-<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s">&#39;--favorite&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;favorite_number&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;--last-name&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;last_name&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
+<span class="nd">@arg_botcmd</span><span class="p">(</span><span class="s1">&#39;--favorite&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;favorite_number&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">first_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">favorite_number</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="c"># if you send it !hello Err --last-name Bot</span>
-    <span class="c"># first_name will be &#39;Err&#39;</span>
-    <span class="c"># last_name will be &#39;Bot&#39;</span>
-    <span class="c"># favorite_number will be 42</span>
+    <span class="c1"># if you send it !hello Err --last-name Bot</span>
+    <span class="c1"># first_name will be &#39;Err&#39;</span>
+    <span class="c1"># last_name will be &#39;Bot&#39;</span>
+    <span class="c1"># favorite_number will be 42</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -182,12 +182,12 @@ non-overlapping matches that were found in the message.</p>
 require a bot prefix at the beginning of the line, in order to create more
 flexible bot commands. Here's an example of a bot command that lets people
 ask for cookies:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">re_botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">re_botcmd</span>
 
 <span class="k">class</span> <span class="nc">CookieBot</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A cookiemonster bot&quot;&quot;&quot;</span>
 
-    <span class="nd">@re_botcmd</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">r&quot;^(([Cc]an|[Mm]ay) I have a )?cookie please\?$&quot;</span><span class="p">)</span>
+    <span class="nd">@re_botcmd</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">r&quot;^(([Cc]an|[Mm]ay) I have a )?cookie please\?$&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">hand_out_cookies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">match</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gives cookies to people who ask me nicely.</span>
@@ -204,8 +204,8 @@ ask for cookies:</p>
 <span class="sd">        Err: May I have a cookie please?</span>
 <span class="sd">        Err; cookie please?</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">yield</span> <span class="s">&quot;Here&#39;s a cookie for you, {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="s">&quot;/me hands out a cookie.&quot;</span>
+        <span class="k">yield</span> <span class="s2">&quot;Here&#39;s a cookie for you, {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">frm</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&quot;/me hands out a cookie.&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -215,16 +215,16 @@ ask for cookies:</p>
 by passing <cite>prefixed=False</cite> to the <code class="xref py py-func docutils literal"><span class="pre">re_botcmd()</span></code>
 decorator. This is especially useful if you want to trigger on specific
 keywords that could show up anywhere in a conversation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">re_botcmd</span>
 
 <span class="k">class</span> <span class="nc">CookieBot</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A cookiemonster bot&quot;&quot;&quot;</span>
 
-    <span class="nd">@re_botcmd</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">r&quot;(^| )cookies?( |$)&quot;</span><span class="p">,</span> <span class="n">prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+    <span class="nd">@re_botcmd</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">r&quot;(^| )cookies?( |$)&quot;</span><span class="p">,</span> <span class="n">prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">listen_for_talk_of_cookies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">match</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Talk of cookies gives Errbot a craving...&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s">&quot;Somebody mentioned cookies? Om nom nom!&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Somebody mentioned cookies? Om nom nom!&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -334,14 +334,14 @@ keywords that could show up anywhere in a conversation:</p>
         <li class="right" >
           <a href="basics.html" title="3. Hello, world!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Plugin development</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

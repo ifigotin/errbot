@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.botplugin &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.botplugin &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="errbot" href="../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,7 +88,7 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.botplugin</h1><div class="highlight"><pre>
-<span class="kn">import</span> <span class="nn">logging</span>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shlex</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">current_thread</span>
@@ -103,7 +103,7 @@
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 
-<span class="c"># noinspection PyAbstractClass</span>
+<span class="c1"># noinspection PyAbstractClass</span>
 <div class="viewcode-block" id="BotPluginBase"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase">[docs]</a><span class="k">class</span> <span class="nc">BotPluginBase</span><span class="p">(</span><span class="n">StoreMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     This class handle the basic needs of bot plugins like loading, unloading and creating a storage</span>
@@ -114,11 +114,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">is_activated</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_timers</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&quot;errbot.plugins.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;errbot.plugins.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">bot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_load_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">BotPluginBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-</div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BotPluginBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span></div>
+
     <span class="k">def</span> <span class="nf">_load_bot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bot</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This should be eventually moved back to __init__ once plugin will forward correctly their params.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -141,19 +141,19 @@
 <span class="sd">        For exemple you can access:</span>
 <span class="sd">        self.bot_config.BOT_DATA_DIR</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c"># if BOT_ADMINS is just an unique string make it a tuple for backwards</span>
-        <span class="c"># compatibility</span>
+        <span class="c1"># if BOT_ADMINS is just an unique string make it a tuple for backwards</span>
+        <span class="c1"># compatibility</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">BOT_ADMINS</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">BOT_ADMINS</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">BOT_ADMINS</span><span class="p">,)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">bot_config</span>
 
 <div class="viewcode-block" id="BotPluginBase.init_storage"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.init_storage">[docs]</a>    <span class="k">def</span> <span class="nf">init_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">classname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Init storage for </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">classname</span><span class="p">)</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">BOT_DATA_DIR</span><span class="p">,</span> <span class="n">PLUGINS_SUBDIR</span><span class="p">,</span> <span class="n">classname</span> <span class="o">+</span> <span class="s">&#39;.db&#39;</span><span class="p">)</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Loading </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">open_storage</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-</div>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Init storage for </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">classname</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_config</span><span class="o">.</span><span class="n">BOT_DATA_DIR</span><span class="p">,</span> <span class="n">PLUGINS_SUBDIR</span><span class="p">,</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.db&#39;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Loading </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">open_storage</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPluginBase.activate"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.activate">[docs]</a>    <span class="k">def</span> <span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Override if you want to do something at initialization phase (don&#39;t forget to</span>
@@ -162,14 +162,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">init_storage</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">inject_commands_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">inject_command_filters_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_activated</span> <span class="o">=</span> <span class="bp">True</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_activated</span> <span class="o">=</span> <span class="bp">True</span></div>
+
 <div class="viewcode-block" id="BotPluginBase.deactivate"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.deactivate">[docs]</a>    <span class="k">def</span> <span class="nf">deactivate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Override if you want to do something at tear down phase (don&#39;t forget to super(Gnagna, self).deactivate())</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;You still have active pollers at deactivation stage, I cleaned them up for you.&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;You still have active pollers at deactivation stage, I cleaned them up for you.&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">timer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_timers</span><span class="p">:</span>
                 <span class="n">timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
@@ -180,8 +180,8 @@
             <span class="k">pass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">remove_command_filters_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">remove_commands_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_activated</span> <span class="o">=</span> <span class="bp">False</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_activated</span> <span class="o">=</span> <span class="bp">False</span></div>
+
 <div class="viewcode-block" id="BotPluginBase.start_poller"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.start_poller">[docs]</a>    <span class="k">def</span> <span class="nf">start_poller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                      <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                      <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
@@ -199,16 +199,16 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
             <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Programming the polling of </span><span class="si">%s</span><span class="s"> every </span><span class="si">%i</span><span class="s"> seconds with args </span><span class="si">%s</span><span class="s"> and kwargs </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Programming the polling of </span><span class="si">%s</span><span class="s1"> every </span><span class="si">%i</span><span class="s1"> seconds with args </span><span class="si">%s</span><span class="s1"> and kwargs </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
             <span class="n">method</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
         <span class="p">)</span>
-        <span class="c"># noinspection PyBroadException</span>
+        <span class="c1"># noinspection PyBroadException</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">program_next_poll</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;failed&#39;</span><span class="p">)</span>
-</div>
+            <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;failed&#39;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPluginBase.stop_poller"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.stop_poller">[docs]</a>    <span class="k">def</span> <span class="nf">stop_poller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                     <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
                     <span class="n">args</span><span class="p">:</span> <span class="n">Tuple</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -217,21 +217,21 @@
             <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
             <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Stop polling of </span><span class="si">%s</span><span class="s"> with args </span><span class="si">%s</span><span class="s"> and kwargs </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
-</div>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Stop polling of </span><span class="si">%s</span><span class="s1"> with args </span><span class="si">%s</span><span class="s1"> and kwargs </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span></div>
+
 <div class="viewcode-block" id="BotPluginBase.program_next_poll"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.program_next_poll">[docs]</a>    <span class="k">def</span> <span class="nf">program_next_poll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                           <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                           <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
                           <span class="n">args</span><span class="p">:</span> <span class="n">Tuple</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                           <span class="n">kwargs</span><span class="p">:</span> <span class="n">Mapping</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">poller</span><span class="p">,</span>
-                  <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;interval&#39;</span><span class="p">:</span> <span class="n">interval</span><span class="p">,</span> <span class="s">&#39;method&#39;</span><span class="p">:</span> <span class="n">method</span><span class="p">,</span> <span class="s">&#39;args&#39;</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span> <span class="s">&#39;kwargs&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">})</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_timers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c"># save the timer to be able to kill it</span>
-        <span class="n">t</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&#39;Poller thread for </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">method</span><span class="o">.</span><span class="n">__self__</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
-        <span class="n">t</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>  <span class="c"># so it is not locking on exit</span>
-        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</div>
+                  <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;interval&#39;</span><span class="p">:</span> <span class="n">interval</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">method</span><span class="p">,</span> <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span> <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_timers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># save the timer to be able to kill it</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s1">&#39;Poller thread for </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">method</span><span class="o">.</span><span class="n">__self__</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># so it is not locking on exit</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BotPluginBase.poller"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPluginBase.poller">[docs]</a>    <span class="k">def</span> <span class="nf">poller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
@@ -239,19 +239,19 @@
                <span class="n">kwargs</span><span class="p">:</span> <span class="n">Mapping</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">previous_timer</span> <span class="o">=</span> <span class="n">current_thread</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">previous_timer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_timers</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Previous timer found and removed&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Previous timer found and removed&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_timers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">previous_timer</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_pollers</span><span class="p">:</span>
-            <span class="c"># noinspection PyBroadException</span>
+            <span class="c1"># noinspection PyBroadException</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;A poller crashed&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">program_next_poll</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;A poller crashed&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">program_next_poll</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div></div>
 
 
-<span class="c"># noinspection PyAbstractClass</span></div></div>
+<span class="c1"># noinspection PyAbstractClass</span>
 <div class="viewcode-block" id="BotPlugin"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin">[docs]</a><span class="k">class</span> <span class="nc">BotPlugin</span><span class="p">(</span><span class="n">BotPluginBase</span><span class="p">):</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_err_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -285,8 +285,8 @@
 
 <span class="sd">        Note: if this method returns None, the plugin won&#39;t be configured</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">None</span>
-</div>
+        <span class="k">return</span> <span class="bp">None</span></div>
+
 <div class="viewcode-block" id="BotPlugin.check_configuration"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.check_configuration">[docs]</a>    <span class="k">def</span> <span class="nf">check_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        By default, this method will do only a BASIC check. You need to override</span>
@@ -303,8 +303,8 @@
 <span class="sd">        In case of validation error it should raise a errbot.utils.ValidationException</span>
 <span class="sd">        :param configuration: the configuration to be checked.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">recurse_check_structure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_configuration_template</span><span class="p">(),</span> <span class="n">configuration</span><span class="p">)</span>  <span class="c"># default behavior</span>
-</div>
+        <span class="n">recurse_check_structure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_configuration_template</span><span class="p">(),</span> <span class="n">configuration</span><span class="p">)</span>  <span class="c1"># default behavior</span></div>
+
 <div class="viewcode-block" id="BotPlugin.configure"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.configure">[docs]</a>    <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        By default, it will just store the current configuration in the self.config</span>
@@ -315,8 +315,8 @@
 <span class="sd">        at that point.</span>
 <span class="sd">        :param configuration: injected configuration for the plugin.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">configuration</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">configuration</span></div>
+
 <div class="viewcode-block" id="BotPlugin.activate"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.activate">[docs]</a>    <span class="k">def</span> <span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered on plugin activation.</span>
@@ -324,8 +324,8 @@
 <span class="sd">            Override this method if you want to do something at initialization phase</span>
 <span class="sd">            (don&#39;t forget to `super().activate()`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
-</div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BotPlugin.deactivate"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.deactivate">[docs]</a>    <span class="k">def</span> <span class="nf">deactivate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered on plugin deactivation.</span>
@@ -333,16 +333,16 @@
 <span class="sd">            Override this method if you want to do something at tear-down phase</span>
 <span class="sd">            (don&#39;t forget to `super().deactivate()`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
-</div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_connect"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_connect">[docs]</a>    <span class="k">def</span> <span class="nf">callback_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered when the bot has successfully connected to the chat network.</span>
 
 <span class="sd">            Override this method to get notified when the bot is connected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_message"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_message">[docs]</a>    <span class="k">def</span> <span class="nf">callback_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered on every message not coming from the bot itself.</span>
@@ -352,8 +352,8 @@
 <span class="sd">            :param message:</span>
 <span class="sd">                representing the message that was received.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_presence"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_presence">[docs]</a>    <span class="k">def</span> <span class="nf">callback_presence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">presence</span><span class="p">:</span> <span class="n">Presence</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered on every presence change.</span>
@@ -362,8 +362,8 @@
 <span class="sd">                An instance of :class:`~errbot.backends.base.Presence`</span>
 <span class="sd">                representing the new presence state that was received.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_stream"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_stream">[docs]</a>    <span class="k">def</span> <span class="nf">callback_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">:</span> <span class="n">Stream</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered asynchronously (in a different thread context) on every incoming stream</span>
@@ -374,8 +374,8 @@
 <span class="sd">            :param stream:</span>
 <span class="sd">                the incoming stream request.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">stream</span><span class="o">.</span><span class="n">reject</span><span class="p">()</span>  <span class="c"># by default, reject the file as the plugin doesn&#39;t want it.</span>
-</div>
+        <span class="n">stream</span><span class="o">.</span><span class="n">reject</span><span class="p">()</span>  <span class="c1"># by default, reject the file as the plugin doesn&#39;t want it.</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_botmessage"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_botmessage">[docs]</a>    <span class="k">def</span> <span class="nf">callback_botmessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered on every message coming from the bot itself.</span>
@@ -387,8 +387,8 @@
 <span class="sd">                An instance of :class:`~errbot.backends.base.Message`</span>
 <span class="sd">                representing the message that was received.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_room_joined"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_room_joined">[docs]</a>    <span class="k">def</span> <span class="nf">callback_room_joined</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">MUCRoom</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered when the bot has joined a MUC.</span>
@@ -397,8 +397,8 @@
 <span class="sd">                An instance of :class:`~errbot.backends.base.MUCRoom`</span>
 <span class="sd">                representing the room that was joined.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_room_left"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_room_left">[docs]</a>    <span class="k">def</span> <span class="nf">callback_room_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">MUCRoom</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered when the bot has left a MUC.</span>
@@ -407,8 +407,8 @@
 <span class="sd">                An instance of :class:`~errbot.backends.base.MUCRoom`</span>
 <span class="sd">                representing the room that was left.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BotPlugin.callback_room_topic"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.callback_room_topic">[docs]</a>    <span class="k">def</span> <span class="nf">callback_room_topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">MUCRoom</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Triggered when the topic in a MUC changes.</span>
@@ -417,23 +417,23 @@
 <span class="sd">                An instance of :class:`~errbot.backends.base.MUCRoom`</span>
 <span class="sd">                representing the room for which the topic changed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
+        <span class="k">pass</span></div>
 
-    <span class="c"># Proxyfy some useful tools from the motherbot</span>
-    <span class="c"># this is basically the contract between the plugins and the main bot</span>
-</div>
+    <span class="c1"># Proxyfy some useful tools from the motherbot</span>
+    <span class="c1"># this is basically the contract between the plugins and the main bot</span>
+
 <div class="viewcode-block" id="BotPlugin.warn_admins"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.warn_admins">[docs]</a>    <span class="k">def</span> <span class="nf">warn_admins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">warning</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Sends a warning to the administrators of the bot</span>
 <span class="sd">            :param warning: mardown formatted text of the warning.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">warn_admins</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">warn_admins</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.send"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
              <span class="n">user</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
              <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
              <span class="n">in_reply_to</span><span class="p">:</span> <span class="n">Message</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-             <span class="n">message_type</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s">&#39;chat&#39;</span><span class="p">,</span>
+             <span class="n">message_type</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;chat&#39;</span><span class="p">,</span>
              <span class="n">groupchat_nick_reply</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Sends asynchronously a message to a room or a user.</span>
@@ -444,9 +444,9 @@
 <span class="sd">             :param text: markdown formatted text to send to the user.</span>
 <span class="sd">             :param user: identifier of the user to which you want to send a message to. see build_identifier.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">in_reply_to</span><span class="p">,</span> <span class="n">message_type</span><span class="p">,</span> <span class="n">groupchat_nick_reply</span><span class="p">)</span>
-</div>
-<div class="viewcode-block" id="BotPlugin.change_presence"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.change_presence">[docs]</a>    <span class="k">def</span> <span class="nf">change_presence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">ONLINE</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">in_reply_to</span><span class="p">,</span> <span class="n">message_type</span><span class="p">,</span> <span class="n">groupchat_nick_reply</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BotPlugin.change_presence"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.change_presence">[docs]</a>    <span class="k">def</span> <span class="nf">change_presence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">ONLINE</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Changes the presence/status of the bot.</span>
 
@@ -454,14 +454,14 @@
 <span class="sd">        :param message: Additional message</span>
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">change_presence</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">change_presence</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.send_templated"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.send_templated">[docs]</a>    <span class="k">def</span> <span class="nf">send_templated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                        <span class="n">user</span><span class="p">:</span> <span class="n">Identifier</span><span class="p">,</span>
                        <span class="n">template_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                        <span class="n">template_parameters</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">,</span>
                        <span class="n">in_reply_to</span><span class="p">:</span> <span class="n">Message</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                       <span class="n">message_type</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s">&#39;chat&#39;</span><span class="p">,</span>
+                       <span class="n">message_type</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;chat&#39;</span><span class="p">,</span>
                        <span class="n">groupchat_nick_reply</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Sends asynchronously a message to a room or a user.</span>
@@ -476,16 +476,16 @@
 <span class="sd">             :param user: identifier of the user to which you want to send a message to. see build_identifier.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">send_templated</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">template_name</span><span class="p">,</span> <span class="n">template_parameters</span><span class="p">,</span> <span class="n">in_reply_to</span><span class="p">,</span> <span class="n">message_type</span><span class="p">,</span>
-                                        <span class="n">groupchat_nick_reply</span><span class="p">)</span>
-</div>
+                                        <span class="n">groupchat_nick_reply</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.build_identifier"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.build_identifier">[docs]</a>    <span class="k">def</span> <span class="nf">build_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txtrep</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           Transform a textual representation of a user or room identifier to the correct</span>
 <span class="sd">           Identifier object you can set in Message.to and Message.frm.</span>
 <span class="sd">           :param txtrep: the textual representation of the identifier (it is backend dependent).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">build_identifier</span><span class="p">(</span><span class="n">txtrep</span><span class="p">)</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">build_identifier</span><span class="p">(</span><span class="n">txtrep</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.send_stream_request"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.send_stream_request">[docs]</a>    <span class="k">def</span> <span class="nf">send_stream_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                             <span class="n">user</span><span class="p">:</span> <span class="n">Identifier</span><span class="p">,</span>
                             <span class="n">fsource</span><span class="p">:</span> <span class="n">IOBase</span><span class="p">,</span>
@@ -502,8 +502,8 @@
 
 <span class="sd">            It will return a Stream object on which you can monitor the progress of it.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">send_stream_request</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">fsource</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">stream_type</span><span class="p">)</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">send_stream_request</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">fsource</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">stream_type</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.join_room"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.join_room">[docs]</a>    <span class="k">def</span> <span class="nf">join_room</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Join a room (MUC).</span>
@@ -515,14 +515,14 @@
 <span class="sd">        :param password:</span>
 <span class="sd">            An optional password to use (for password-protected rooms).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">join_room</span><span class="p">(</span><span class="n">room</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">join_room</span><span class="p">(</span><span class="n">room</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.rooms"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.rooms">[docs]</a>    <span class="k">def</span> <span class="nf">rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">MUCRoom</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The list of rooms the bot is currently in.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">rooms</span><span class="p">()</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">rooms</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BotPlugin.query_room"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.query_room">[docs]</a>    <span class="k">def</span> <span class="nf">query_room</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MUCRoom</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Query a room for information.</span>
@@ -534,14 +534,14 @@
 <span class="sd">        :raises:</span>
 <span class="sd">            :class:`~errbot.backends.base.RoomDoesNotExistError` if the room doesn&#39;t exist.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">query_room</span><span class="p">(</span><span class="n">room</span><span class="o">=</span><span class="n">room</span><span class="p">)</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">query_room</span><span class="p">(</span><span class="n">room</span><span class="o">=</span><span class="n">room</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.get_installed_plugin_repos"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.get_installed_plugin_repos">[docs]</a>    <span class="k">def</span> <span class="nf">get_installed_plugin_repos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Get the current installed plugin repos in a dictionary of name / url</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">get_installed_plugin_repos</span><span class="p">()</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">get_installed_plugin_repos</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BotPlugin.start_poller"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.start_poller">[docs]</a>    <span class="k">def</span> <span class="nf">start_poller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                      <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                      <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
@@ -560,8 +560,8 @@
 <span class="sd">            :param interval: interval in seconds.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">start_poller</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-</div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">start_poller</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="BotPlugin.stop_poller"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.BotPlugin.stop_poller">[docs]</a>    <span class="k">def</span> <span class="nf">stop_poller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                     <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
                     <span class="n">args</span><span class="p">:</span> <span class="n">Tuple</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -576,9 +576,9 @@
 <span class="sd">            :param method: The initial method you passed to start_poller.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">stop_poller</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">stop_poller</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div></div>
 
-</div></div>
+
 <div class="viewcode-block" id="ArgParserBase"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.ArgParserBase">[docs]</a><span class="k">class</span> <span class="nc">ArgParserBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The `ArgSplitterBase` class defines the API which is used for argument</span>
@@ -595,9 +595,9 @@
 <span class="sd">        of some kind.</span>
 <span class="sd">        :param args: string to parse</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
 
-</div></div>
+
 <div class="viewcode-block" id="SeparatorArgParser"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.SeparatorArgParser">[docs]</a><span class="k">class</span> <span class="nc">SeparatorArgParser</span><span class="p">(</span><span class="n">ArgParserBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This argument splitter splits args on a given separator, like</span>
@@ -614,12 +614,12 @@
 <span class="sd">            If given, do at most this many splits.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">separator</span> <span class="o">=</span> <span class="n">separator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">maxsplit</span> <span class="o">=</span> <span class="n">maxsplit</span>
-</div>
-<div class="viewcode-block" id="SeparatorArgParser.parse_args"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.SeparatorArgParser.parse_args">[docs]</a>    <span class="k">def</span> <span class="nf">parse_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxsplit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxsplit</span> <span class="o">=</span> <span class="n">maxsplit</span></div>
 
-</div></div>
+<div class="viewcode-block" id="SeparatorArgParser.parse_args"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.SeparatorArgParser.parse_args">[docs]</a>    <span class="k">def</span> <span class="nf">parse_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxsplit</span><span class="p">)</span></div></div>
+
+
 <div class="viewcode-block" id="ShlexArgParser"><a class="viewcode-back" href="../../errbot.botplugin.html#errbot.ShlexArgParser">[docs]</a><span class="k">class</span> <span class="nc">ShlexArgParser</span><span class="p">(</span><span class="n">ArgParserBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This argument splitter splits args using posix shell quoting rules,</span>
@@ -702,7 +702,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -710,7 +710,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.bundled.threadpool &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.bundled.threadpool &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../../index.html" />
     <link rel="up" title="errbot" href="../../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,7 +88,7 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.bundled.threadpool</h1><div class="highlight"><pre>
-<span class="c"># -*- coding: UTF-8 -*-</span>
+<span></span><span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Easy to use object-oriented thread pool framework.</span>
 
 <span class="sd">A thread pool is an object that maintains a pool of worker threads to perform</span>
@@ -124,44 +124,44 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="n">__docformat__</span> <span class="o">=</span> <span class="s">&quot;restructuredtext en&quot;</span>
+<span class="n">__docformat__</span> <span class="o">=</span> <span class="s2">&quot;restructuredtext en&quot;</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;makeRequests&#39;</span><span class="p">,</span>
-    <span class="s">&#39;NoResultsPending&#39;</span><span class="p">,</span>
-    <span class="s">&#39;NoWorkersAvailable&#39;</span><span class="p">,</span>
-    <span class="s">&#39;ThreadPool&#39;</span><span class="p">,</span>
-    <span class="s">&#39;WorkRequest&#39;</span><span class="p">,</span>
-    <span class="s">&#39;WorkerThread&#39;</span>
+    <span class="s1">&#39;makeRequests&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NoResultsPending&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NoWorkersAvailable&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ThreadPool&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;WorkRequest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;WorkerThread&#39;</span>
 <span class="p">]</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;Christopher Arndt&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s">&#39;1.2.7&#39;</span>
-<span class="n">__revision__</span> <span class="o">=</span> <span class="s">&quot;$Revision: 416 $&quot;</span>
-<span class="n">__date__</span> <span class="o">=</span> <span class="s">&quot;$Date: 2009-10-07 05:41:27 +0200 (Wed, 07 Oct 2009) $&quot;</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;MIT license&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Christopher Arndt&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.2.7&#39;</span>
+<span class="n">__revision__</span> <span class="o">=</span> <span class="s2">&quot;$Revision: 416 $&quot;</span>
+<span class="n">__date__</span> <span class="o">=</span> <span class="s2">&quot;$Date: 2009-10-07 05:41:27 +0200 (Wed, 07 Oct 2009) $&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;MIT license&quot;</span>
 
 
-<span class="c"># standard library modules</span>
+<span class="c1"># standard library modules</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">Empty</span>
 <span class="kn">import</span> <span class="nn">traceback</span>
 
 
-<span class="c"># exceptions</span>
+<span class="c1"># exceptions</span>
 <div class="viewcode-block" id="NoResultsPending"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.NoResultsPending">[docs]</a><span class="k">class</span> <span class="nc">NoResultsPending</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;All work requests have been processed.&quot;&quot;&quot;</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-</div>
+
 <div class="viewcode-block" id="NoWorkersAvailable"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.NoWorkersAvailable">[docs]</a><span class="k">class</span> <span class="nc">NoWorkersAvailable</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;No worker threads available to process remaining requests.&quot;&quot;&quot;</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
 
-<span class="c"># internal module helper functions</span>
-<span class="c">#noinspection PyUnusedLocal</span></div>
+<span class="c1"># internal module helper functions</span>
+<span class="c1">#noinspection PyUnusedLocal</span>
 <span class="k">def</span> <span class="nf">_handle_thread_exception</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">exc_info</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Default exception handler callback function.</span>
 
@@ -171,7 +171,7 @@
     <span class="n">traceback</span><span class="o">.</span><span class="n">print_exception</span><span class="p">(</span><span class="o">*</span><span class="n">exc_info</span><span class="p">)</span>
 
 
-<span class="c"># utility functions</span>
+<span class="c1"># utility functions</span>
 <div class="viewcode-block" id="makeRequests"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.makeRequests">[docs]</a><span class="k">def</span> <span class="nf">makeRequests</span><span class="p">(</span><span class="n">callable_</span><span class="p">,</span> <span class="n">args_list</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">exc_callback</span><span class="o">=</span><span class="n">_handle_thread_exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create several work requests for same callable with different arguments.</span>
@@ -201,10 +201,10 @@
                 <span class="n">WorkRequest</span><span class="p">(</span><span class="n">callable_</span><span class="p">,</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="bp">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">,</span>
                             <span class="n">exc_callback</span><span class="o">=</span><span class="n">exc_callback</span><span class="p">)</span>
             <span class="p">)</span>
-    <span class="k">return</span> <span class="n">requests</span>
+    <span class="k">return</span> <span class="n">requests</span></div>
 
 
-<span class="c"># classes</span></div>
+<span class="c1"># classes</span>
 <div class="viewcode-block" id="WorkerThread"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.WorkerThread">[docs]</a><span class="k">class</span> <span class="nc">WorkerThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Background thread connected to the requests/results queues.</span>
 
@@ -227,40 +227,40 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span> <span class="o">=</span> <span class="n">results_queue</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_poll_timeout</span> <span class="o">=</span> <span class="n">poll_timeout</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dismissed</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="WorkerThread.run"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.WorkerThread.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Repeatedly process the job queue until told to exit.&quot;&quot;&quot;</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dismissed</span><span class="o">.</span><span class="n">isSet</span><span class="p">():</span>
-                <span class="c"># we are dismissed, break out of loop</span>
+                <span class="c1"># we are dismissed, break out of loop</span>
                 <span class="k">break</span>
-                <span class="c"># get next work request. If we don&#39;t get a new request from the</span>
-            <span class="c"># queue after self._poll_timout seconds, we jump to the start of</span>
-            <span class="c"># the while loop again, to give the thread a chance to exit.</span>
+                <span class="c1"># get next work request. If we don&#39;t get a new request from the</span>
+            <span class="c1"># queue after self._poll_timout seconds, we jump to the start of</span>
+            <span class="c1"># the while loop again, to give the thread a chance to exit.</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_requests_queue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_poll_timeout</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">Empty</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dismissed</span><span class="o">.</span><span class="n">isSet</span><span class="p">():</span>
-                    <span class="c"># we are dismissed, put back request in queue and exit loop</span>
+                    <span class="c1"># we are dismissed, put back request in queue and exit loop</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_requests_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
                     <span class="k">break</span>
-                <span class="c">#noinspection PyBroadException</span>
+                <span class="c1">#noinspection PyBroadException</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">result</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">request</span><span class="o">.</span><span class="n">kwds</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">request</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
-                    <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;Command failed&#39;</span><span class="p">)</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Command failed&#39;</span><span class="p">)</span>
                     <span class="n">request</span><span class="o">.</span><span class="n">exception</span> <span class="o">=</span> <span class="bp">True</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">request</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()))</span>
-</div>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">request</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()))</span></div>
+
 <div class="viewcode-block" id="WorkerThread.dismiss"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.WorkerThread.dismiss">[docs]</a>    <span class="k">def</span> <span class="nf">dismiss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets a flag to tell the thread to exit when done with current job.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dismissed</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dismissed</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div></div>
 
-</div></div>
+
 <div class="viewcode-block" id="WorkRequest"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.WorkRequest">[docs]</a><span class="k">class</span> <span class="nc">WorkRequest</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;A request to execute a callable for putting in the request queue later.</span>
 
@@ -303,19 +303,19 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">requestID</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;requestID must be hashable.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;requestID must be hashable.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">exception</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">exc_callback</span> <span class="o">=</span> <span class="n">exc_callback</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="n">callable_</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span> <span class="ow">or</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span> <span class="o">=</span> <span class="n">kwds</span> <span class="ow">or</span> <span class="p">{}</span>
-</div>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;&lt;WorkRequest id=</span><span class="si">%s</span><span class="s"> args=</span><span class="si">%r</span><span class="s"> kwargs=</span><span class="si">%r</span><span class="s"> exception=</span><span class="si">%s</span><span class="s">&gt;&quot;</span> <span class="o">%</span>\
-               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exception</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span> <span class="o">=</span> <span class="n">kwds</span> <span class="ow">or</span> <span class="p">{}</span></div>
 
-</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;WorkRequest id=</span><span class="si">%s</span><span class="s2"> args=</span><span class="si">%r</span><span class="s2"> kwargs=</span><span class="si">%r</span><span class="s2"> exception=</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span>\
+               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exception</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="ThreadPool"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool">[docs]</a><span class="k">class</span> <span class="nc">ThreadPool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;A thread pool, distributing work requests and collecting results.</span>
 
@@ -350,8 +350,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">workers</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dismissedWorkers</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workRequests</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">createWorkers</span><span class="p">(</span><span class="n">num_workers</span><span class="p">,</span> <span class="n">poll_timeout</span><span class="p">)</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">createWorkers</span><span class="p">(</span><span class="n">num_workers</span><span class="p">,</span> <span class="n">poll_timeout</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="ThreadPool.createWorkers"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool.createWorkers">[docs]</a>    <span class="k">def</span> <span class="nf">createWorkers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_workers</span><span class="p">,</span> <span class="n">poll_timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add num_workers worker threads to the pool.</span>
 
@@ -362,8 +362,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_workers</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_requests_queue</span><span class="p">,</span>
-                                             <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span><span class="p">,</span> <span class="n">poll_timeout</span><span class="o">=</span><span class="n">poll_timeout</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;ThreadPool worker </span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">))</span>
-</div>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span><span class="p">,</span> <span class="n">poll_timeout</span><span class="o">=</span><span class="n">poll_timeout</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ThreadPool worker </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">))</span></div>
+
 <div class="viewcode-block" id="ThreadPool.dismissWorkers"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool.dismissWorkers">[docs]</a>    <span class="k">def</span> <span class="nf">dismissWorkers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_workers</span><span class="p">,</span> <span class="n">do_join</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Tell num_workers worker threads to quit after their current task.&quot;&quot;&quot;</span>
         <span class="n">dismiss_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -376,45 +376,45 @@
             <span class="k">for</span> <span class="n">worker</span> <span class="ow">in</span> <span class="n">dismiss_list</span><span class="p">:</span>
                 <span class="n">worker</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">dismissedWorkers</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dismiss_list</span><span class="p">)</span>
-</div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dismissedWorkers</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dismiss_list</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="ThreadPool.joinAllDismissedWorkers"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool.joinAllDismissedWorkers">[docs]</a>    <span class="k">def</span> <span class="nf">joinAllDismissedWorkers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Perform Thread.join() on all worker threads that have been dismissed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">worker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dismissedWorkers</span><span class="p">:</span>
             <span class="n">worker</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dismissedWorkers</span> <span class="o">=</span> <span class="p">[]</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dismissedWorkers</span> <span class="o">=</span> <span class="p">[]</span></div>
+
 <div class="viewcode-block" id="ThreadPool.putRequest"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool.putRequest">[docs]</a>    <span class="k">def</span> <span class="nf">putRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Put work request into work queue and save its id for later.&quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">WorkRequest</span><span class="p">)</span>
-        <span class="c"># don&#39;t reuse old work requests</span>
-        <span class="k">assert</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;exception&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="c1"># don&#39;t reuse old work requests</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;exception&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_requests_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">workRequests</span><span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">requestID</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workRequests</span><span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">requestID</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span></div>
+
 <div class="viewcode-block" id="ThreadPool.poll"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool.poll">[docs]</a>    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Process any new results in the queue.&quot;&quot;&quot;</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="c"># still results pending?</span>
+            <span class="c1"># still results pending?</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">workRequests</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">NoResultsPending</span>
-            <span class="c"># are there still workers to process remaining requests?</span>
+            <span class="c1"># are there still workers to process remaining requests?</span>
             <span class="k">elif</span> <span class="n">block</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">NoWorkersAvailable</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="c"># get back next results</span>
+                <span class="c1"># get back next results</span>
                 <span class="n">request</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results_queue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">)</span>
-                <span class="c"># has an exception occured?</span>
+                <span class="c1"># has an exception occured?</span>
                 <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">exception</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">exc_callback</span><span class="p">:</span>
                     <span class="n">request</span><span class="o">.</span><span class="n">exc_callback</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-                    <span class="c"># hand results to callback, if any</span>
+                    <span class="c1"># hand results to callback, if any</span>
                 <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">callback</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">exception</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">exc_callback</span><span class="p">):</span>
                     <span class="n">request</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
                 <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">workRequests</span><span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">requestID</span><span class="p">]</span>
             <span class="k">except</span> <span class="n">Empty</span><span class="p">:</span>
-                <span class="k">break</span>
-</div>
+                <span class="k">break</span></div>
+
 <div class="viewcode-block" id="ThreadPool.wait"><a class="viewcode-back" href="../../../errbot.bundled.threadpool.html#errbot.bundled.threadpool.ThreadPool.wait">[docs]</a>    <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Wait for results, blocking until all have arrived.&quot;&quot;&quot;</span>
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
@@ -496,7 +496,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -504,7 +504,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>errbot.core_plugins.health &mdash; Err 3.2.2 documentation</title>
+    <title>errbot.core_plugins.health &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../../index.html" />
     <link rel="up" title="errbot" href="../../errbot.html" />
     <script type="text/javascript">
         // GitHub pages offers no way to redirect to a canonical location, so we
@@ -75,7 +75,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" accesskey="U">errbot</a> &raquo;</li> 
       </ul>
@@ -88,7 +88,7 @@
           <div class="body" role="main">
             
   <h1>Source code for errbot.core_plugins.health</h1><div class="highlight"><pre>
-<span class="kn">import</span> <span class="nn">gc</span>
+<span></span><span class="kn">import</span> <span class="nn">gc</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">signal</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -100,10 +100,10 @@
 
 
 <div class="viewcode-block" id="Health"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health">[docs]</a><span class="k">class</span> <span class="nc">Health</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
-    <span class="n">min_err_version</span> <span class="o">=</span> <span class="n">VERSION</span>  <span class="c"># don&#39;t copy paste that for your plugin, it is just because it is a bundled plugin !</span>
+    <span class="n">min_err_version</span> <span class="o">=</span> <span class="n">VERSION</span>  <span class="c1"># don&#39;t copy paste that for your plugin, it is just because it is a bundled plugin !</span>
     <span class="n">max_err_version</span> <span class="o">=</span> <span class="n">VERSION</span>
 
-    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">&#39;status&#39;</span><span class="p">)</span>
+    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="Health.status"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.status">[docs]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; If I am alive I should be able to respond to this one</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -111,11 +111,11 @@
         <span class="n">loads</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_load</span><span class="p">(</span><span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
         <span class="n">gc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_gc</span><span class="p">(</span><span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;plugins_statuses&#39;</span><span class="p">:</span> <span class="n">plugins_statuses</span><span class="p">[</span><span class="s">&#39;plugins_statuses&#39;</span><span class="p">],</span>
-                <span class="s">&#39;loads&#39;</span><span class="p">:</span> <span class="n">loads</span><span class="p">[</span><span class="s">&#39;loads&#39;</span><span class="p">],</span>
-                <span class="s">&#39;gc&#39;</span><span class="p">:</span> <span class="n">gc</span><span class="p">[</span><span class="s">&#39;gc&#39;</span><span class="p">]}</span>
-</div>
-    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">&#39;status_load&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;plugins_statuses&#39;</span><span class="p">:</span> <span class="n">plugins_statuses</span><span class="p">[</span><span class="s1">&#39;plugins_statuses&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;loads&#39;</span><span class="p">:</span> <span class="n">loads</span><span class="p">[</span><span class="s1">&#39;loads&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;gc&#39;</span><span class="p">:</span> <span class="n">gc</span><span class="p">[</span><span class="s1">&#39;gc&#39;</span><span class="p">]}</span></div>
+
+    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;status_load&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="Health.status_load"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.status_load">[docs]</a>    <span class="k">def</span> <span class="nf">status_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; shows the load status</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -125,15 +125,15 @@
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="n">loads</span> <span class="o">=</span> <span class="bp">None</span>
 
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;loads&#39;</span><span class="p">:</span> <span class="n">loads</span><span class="p">}</span>
-</div>
-    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">&#39;status_gc&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;loads&#39;</span><span class="p">:</span> <span class="n">loads</span><span class="p">}</span></div>
+
+    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;status_gc&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="Health.status_gc"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.status_gc">[docs]</a>    <span class="k">def</span> <span class="nf">status_gc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; shows the garbage collection details</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;gc&#39;</span><span class="p">:</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_count</span><span class="p">()}</span>
-</div>
-    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">&#39;status_plugins&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;gc&#39;</span><span class="p">:</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_count</span><span class="p">()}</span></div>
+
+    <span class="nd">@botcmd</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;status_plugins&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="Health.status_plugins"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.status_plugins">[docs]</a>    <span class="k">def</span> <span class="nf">status_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; shows the plugin status</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -144,52 +144,52 @@
         <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">all_attempted</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">all_blacklisted</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">all_loaded</span><span class="p">:</span>
-                    <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;BA&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                    <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;BA&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;BD&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                    <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;BD&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
             <span class="k">elif</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">all_loaded</span><span class="p">:</span>
-                <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">get_plugin_obj_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">get_plugin_obj_by_name</span><span class="p">(</span>
                     <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">get_configuration_template</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">get_plugin_configuration</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;C&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                <span class="n">plugins_statuses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;plugins_statuses&#39;</span><span class="p">:</span> <span class="n">plugins_statuses</span><span class="p">}</span>
-</div>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;plugins_statuses&#39;</span><span class="p">:</span> <span class="n">plugins_statuses</span><span class="p">}</span></div>
+
     <span class="nd">@botcmd</span>
 <div class="viewcode-block" id="Health.uptime"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.uptime">[docs]</a>    <span class="k">def</span> <span class="nf">uptime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the uptime of the bot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s">&quot;I&#39;ve been up for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> (since </span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">format_timedelta</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">startup_time</span><span class="p">),</span>
-                                                      <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">startup_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%A, %b </span><span class="si">%d</span><span class="s"> at %H:%M&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">&quot;I&#39;ve been up for </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> (since </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">format_timedelta</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">startup_time</span><span class="p">),</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">startup_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%A, %b </span><span class="si">%d</span><span class="s1"> at %H:%M&#39;</span><span class="p">))</span></div>
 
-    <span class="c"># noinspection PyUnusedLocal</span></div>
+    <span class="c1"># noinspection PyUnusedLocal</span>
     <span class="nd">@botcmd</span><span class="p">(</span><span class="n">admin_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <div class="viewcode-block" id="Health.restart"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.restart">[docs]</a>    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Restart the bot. &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&quot;Deactivating all the plugins...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s2">&quot;Deactivating all the plugins...&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">deactivate_all_plugins</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&quot;Restarting&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s2">&quot;Restarting&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
         <span class="n">global_restart</span><span class="p">()</span>
-        <span class="k">return</span> <span class="s">&quot;I&#39;m restarting...&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;I&#39;m restarting...&quot;</span></div>
 
-    <span class="c"># noinspection PyUnusedLocal</span></div>
+    <span class="c1"># noinspection PyUnusedLocal</span>
     <span class="nd">@botcmd</span><span class="p">(</span><span class="n">admin_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <div class="viewcode-block" id="Health.killbot"><a class="viewcode-back" href="../../../errbot.core_plugins.health.html#errbot.core_plugins.health.Health.killbot">[docs]</a>    <span class="k">def</span> <span class="nf">killbot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Shutdown the bot.</span>
 <span class="sd">        Useful when the things are going crazy and you down have access to the machine.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">args</span> <span class="o">!=</span> <span class="s">&quot;really&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;Use `!killbot really` if you really want to shutdown the bot.&quot;</span>
+        <span class="k">if</span> <span class="n">args</span> <span class="o">!=</span> <span class="s2">&quot;really&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Use `!killbot really` if you really want to shutdown the bot.&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&quot;Dave, I can see you are really upset about this...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s2">&quot;Dave, I can see you are really upset about this...&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">deactivate_all_plugins</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&quot;I know I have made some very poor decisions recently...&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s">&quot;Daisy, Daaaaiseey...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s2">&quot;I know I have made some very poor decisions recently...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mess</span><span class="o">.</span><span class="n">frm</span><span class="p">,</span> <span class="s2">&quot;Daisy, Daaaaiseey...&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Exiting&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Exiting&quot;</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">)</span></div></div>
 </pre></div>
   <div id="prev_next_links">
@@ -265,7 +265,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../errbot.html" >errbot</a> &raquo;</li> 
       </ul>
@@ -273,7 +273,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

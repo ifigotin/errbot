@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. Persistence &mdash; Err 3.2.2 documentation</title>
+    <title>7. Persistence &mdash; Err 3.2.3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/err.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.2.2',
+        VERSION:     '3.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Err 3.2.2 documentation" href="../../index.html" />
+    <link rel="top" title="Err 3.2.3 documentation" href="../../index.html" />
     <link rel="up" title="Plugin development" href="index.html" />
     <link rel="next" title="8. Configuration" href="configuration.html" />
     <link rel="prev" title="6. Presence" href="presence.html" />
@@ -83,7 +83,7 @@
         <li class="right" >
           <a href="presence.html" title="6. Presence"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Plugin development</a> &raquo;</li> 
       </ul>
     </div>
@@ -102,36 +102,36 @@ if Errbot is restarted.</p>
 <h2>7.1. How to use it<a class="headerlink" href="#how-to-use-it" title="Permalink to this headline">¶</a></h2>
 <p>You plugin <em>is</em> the store, simply use self as a dictionary.</p>
 <p>Here is a simple example storing are retreiving value from the store.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">errbot</span> <span class="kn">import</span> <span class="n">BotPlugin</span><span class="p">,</span> <span class="n">botcmd</span>
 
 <span class="k">class</span> <span class="nc">PluginExample</span><span class="p">(</span><span class="n">BotPlugin</span><span class="p">):</span>
     <span class="nd">@botcmd</span>
     <span class="k">def</span> <span class="nf">remember</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;TODO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;TODO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
 
     <span class="nd">@botcmd</span>
     <span class="k">def</span> <span class="nf">recall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="s">&#39;TODO&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;TODO&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="caveats">
 <h2>7.2. Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
 <p>The storing occurs when you <em>assign the key</em>. So for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># THIS WON&#39;T WORK</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># THIS WON&#39;T WORK</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="bp">self</span><span class="p">[</span><span class="s">&#39;FOO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
-<span class="n">d</span><span class="p">[</span><span class="s">&#39;subkey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;NONONONONONO&#39;</span>
+<span class="bp">self</span><span class="p">[</span><span class="s1">&#39;FOO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;subkey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;NONONONONONO&#39;</span>
 </pre></div>
 </div>
 <p>You need to do that instead:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># THIS WORKS</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># THIS WORKS</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="bp">self</span><span class="p">[</span><span class="s">&#39;FOO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
+<span class="bp">self</span><span class="p">[</span><span class="s1">&#39;FOO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
 
-<span class="c"># later ...</span>
-<span class="n">d</span><span class="p">[</span><span class="s">&#39;subkey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;NONONONONONO&#39;</span>
-<span class="bp">self</span><span class="p">[</span><span class="s">&#39;FOO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>  <span class="c"># restore the full key if something changed in memory.</span>
+<span class="c1"># later ...</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;subkey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;NONONONONONO&#39;</span>
+<span class="bp">self</span><span class="p">[</span><span class="s1">&#39;FOO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>  <span class="c1"># restore the full key if something changed in memory.</span>
 </pre></div>
 </div>
 </div>
@@ -234,14 +234,14 @@ if Errbot is restarted.</p>
         <li class="right" >
           <a href="presence.html" title="6. Presence"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Err 3.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Plugin development</a> &raquo;</li> 
       </ul>
     </div>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Guillaume Binet, Tali Davidovich Petrover and Nick Groenen.
-          Last updated on Feb 18, 2016.
+          Last updated on Feb 19, 2016.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
     </div>
     

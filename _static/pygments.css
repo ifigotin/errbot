@@ -5,8 +5,10 @@
 .highlight .k { color: #f06f00; font-weight: bold } /* Keyword */
 .highlight .n { color: #3e4349 } /* Name */
 .highlight .o { color: #3e4349 } /* Operator */
+.highlight .ch { color: #3f6b5b } /* Comment.Hashbang */
 .highlight .cm { color: #3f6b5b } /* Comment.Multiline */
 .highlight .cp { color: #3f6b5b } /* Comment.Preproc */
+.highlight .cpf { color: #3f6b5b } /* Comment.PreprocFile */
 .highlight .c1 { color: #3f6b5b } /* Comment.Single */
 .highlight .cs { color: #3f6b5b } /* Comment.Special */
 .highlight .gd { color: #2020ff; background-color: #c8f2ea } /* Generic.Deleted */
