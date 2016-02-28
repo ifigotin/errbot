@@ -105,8 +105,13 @@ opening <cite>_build/html/index.html</cite> in your webbrowser of choice.</p>
 <h2>Publishing to GitHub pages<a class="headerlink" href="#publishing-to-github-pages" title="Permalink to this headline">¶</a></h2>
 <p><em>Note: This is only relevant to project maintainers</em></p>
 <p>The <cite>make gh-pages</cite> command can be used to build output for GitHub pages. This
-will pull down a copy of the repository and auto-commit to the gh-pages branch.</p>
-<p>The results of this can then be reviewed before being pushed.</p>
+will pull down a copy of the repository and auto-commit to the gh-pages branch.
+The results of this can then be reviewed before being pushed.</p>
+<p>There is a <a class="reference external" href="https://jenkins.errbot.net/job/Publish%20errbot.io/">Jenkins job</a>
+which will do all of the above automatically on commits.
+Whenever a new version of errbot is released, the version number on this Jenkins
+job will need to be updated
+(look for <em>&quot;Branch Specifier&quot;</em> under <em>&quot;Branches to build&quot;</em>).</p>
 </div>
 <div class="section" id="including-extra-files-with-github-pages">
 <h2>Including extra files with GitHub pages<a class="headerlink" href="#including-extra-files-with-github-pages" title="Permalink to this headline">¶</a></h2>
