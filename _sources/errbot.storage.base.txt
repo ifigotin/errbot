@@ -1,7 +1,0 @@
-errbot.storage.base module
-==========================
-
-.. automodule:: errbot.storage.base
-    :members:
-    :undoc-members:
-    :show-inheritance:
